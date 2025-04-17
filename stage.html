@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Internationale Stage</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stage SQLI Valencia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
@@ -43,8 +42,40 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    h1, h2, h3, h4 {
+    h1, h2, h3 {
       color: #1e90ff;
+    }
+    .activity-button {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .activity-button:hover {
+      background-color: #0d6efd;
+      transform: scale(1.03);
+    }
+    .multi-image {
+      margin: 2rem auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .multi-image img {
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+    .multi-image img:hover {
+      transform: scale(1.03);
     }
     footer {
       text-align: center;
@@ -59,7 +90,7 @@
   <header>
     <div class="top-bar" style="display: flex; align-items: center; justify-content: space-between;">
       <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
-        <img src="images/pxl.png" alt="Schoollogo" style="height: 80px;">
+        <img src="images/pxl.png" alt="Schoollogo" style="height: 80px;" />
       </div>
       <div class="title" style="flex-grow: 1; text-align: center;">
         <h1>Portfolio Maxim Meus</h1>
@@ -74,14 +105,40 @@
     <a href="selectie.html">Selectie</a>
     <a href="reflectie.html">Eindreflectie</a>
   </nav>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="selectie.html" class="activity-button">⬅️ Ga terug naar selectie</a>
+  </div>
+
   <section>
-    <h2>Internationale Stage – SQLI Valencia</h2><p>Voor mijn internationalisering heb ik gekozen voor een buitenlandse stage bij SQLI in Valencia. In dit verslag beschrijf ik mijn werkzaamheden en reflecteer ik op de ervaringen die ik daar heb opgedaan.
+    <h2>Stage bij SQLI in Valencia</h2>
 
-Dit verhaal begon voor mij in maart 2024, toen ik impulsief besloot mij in te schrijven voor een buitenlandse stage...
+    <h3>Omschrijving:</h3>
+    <p>Voor mijn internationalisering heb ik gekozen voor een buitenlandse stage bij SQLI in Valencia. In dit verslag beschrijf ik mijn werkzaamheden en reflecteer ik op de ervaringen die ik daar heb opgedaan.</p>
 
-[VERDER MET DE VOLLEDIGE REFLECTIETEKST UIT DOCUMENT]
-</p>
+    <h3>Kern:</h3>
+    <p>Dit verhaal begon voor mij in maart 2024, toen ik impulsief besloot mij in te schrijven voor een buitenlandse stage, met als motivatie nieuwe levenservaringen opdoen en een goede start maken voor mijn toekomst. In oktober 2024 kreeg ik te horen dat er een bedrijf genaamd SQLI was gevonden in Barcelona. Een paar weken later volgde een gesprek om te kijken of er een match was. Tijdens dit gesprek werd duidelijk dat de locatie uiteindelijk Valencia zou worden, vanwege een betere connectie met het bedrijf daar.</p>
+    <p>Na positieve gesprekken vertrok ik in februari 2025 voor mijn internationale stage naar Valencia. De eerste twee weken verliepen wat moeizaam door mijn verhuizing van hotel naar appartement, en ook op het werk was het even zoeken. Ondanks deze uitdagingen merkte ik al snel verbetering, doordat ik begon te wennen aan de nieuwe omgeving en beter begreep hoe het bedrijf functioneerde.</p>
+    <p>De opdracht van mijn stage was het ontwikkelen van een chatbot in Microsoft Teams, met als doel het verminderen van alert fatigue. Dit probleem ontstond bij medewerkers die standby-shifts draaiden. Zij kregen regelmatig dezelfde meldingen binnen, die soms vanzelf werden opgelost of waarbij telkens dezelfde acties moesten worden ondernomen. De chatbot moest deze medewerkers ondersteunen door bij een nieuwe melding automatisch te zoeken naar eerdere oplossingen voor vergelijkbare problemen. Dit zou niet alleen de efficiëntie verhogen maar ook de frustratie bij medewerkers verminderen.</p>
+    <p>In de eerste twee weken was het vooral uitzoeken hoe ik dit project ging aanpakken. Er werd veel onderzoek gedaan naar alert fatigue en naar de mogelijke technische aanpak. Ook moest ik nadenken over hoe de infrastructuur eruit zou komen te zien en hoe de chatbot toegang kon krijgen tot bepaalde tickets. In de tweede week hield ik interviews met medewerkers die ervaring hadden met standby-shifts om beter inzicht te krijgen in hun problemen en behoeften. Deze interviews waren cruciaal voor het creëren van een chatbot die daadwerkelijk aansloot bij de behoeften van de eindgebruikers.</p>
+    <p>Vanaf de derde week richtte ik me meer op het technische gedeelte, zoals het creëren van de chatbot in Azure. Dit bracht enkele uitdagingen met zich mee, zoals problemen met permissies. Omdat SQLI een groot bedrijf is, kon niet alles direct worden uitgevoerd zonder een duidelijk plan of business case. Hierdoor besloten we een stap terug te zetten en de communicatie van de chatbot eerst via een emulator te laten verlopen in plaats van via Teams.</p>
+    <p>In de daaropvolgende drie weken lag de focus vooral op het opzetten van de infrastructuur in Azure. Denk hierbij aan het opzetten van container instances voor het draaien van de chatbot in de cloud, key vaults voor het veilig opslaan van belangrijke gegevens, en CI/CD-pipelines om alles veilig en consistent te kunnen implementeren. Dit alles werd gerealiseerd in de weken voor de paasvakantie, wat zorgde voor een stevige basis voor verdere ontwikkeling.</p>
+    <p>Na de paasvakantie lag de nadruk vooral op het ontwerpen en implementeren van de features van de chatbot. Deze features werden eerst uitgeschreven en vervolgens geïmplementeerd, voornamelijk met behulp van integraties met JIRA. Door middel van een API konden we communiceren met JIRA, informatie ophalen van tickets en zo bijdragen aan het verminderen van alert fatigue. Dit onderdeel van het project was bijzonder leerzaam, omdat het zowel technische kennis als inzicht in gebruikerservaring vereiste.</p>
+
+    <h3>Reflectie:</h3>
+    <p>Tijdens deze internationale stage heb ik heel veel geleerd, zowel op professioneel als op persoonlijk vlak. In beide gevallen heb ik waardevolle ervaringen opgedaan en nieuwe inzichten gekregen.</p>
+    <p>Op het vlak van werken heb ik geleerd hoe het echt is om deel uit te maken van een bedrijf. Dat was heel anders dan ik mij had voorgesteld. Hoewel ik al wat werkervaring had, was dit mijn eerste keer in een IT-bedrijf, en dat maakte het extra interessant. Ik ontdekte dat problemen niet altijd snel opgelost worden, bijvoorbeeld wanneer je bepaalde toegangen of permissies nodig hebt. Soms kan het dagen duren voor er iets mee gedaan wordt. Dat was ik niet gewend, maar het heeft me geleerd om meer geduld op te brengen.</p>
+    <p>Toch kijk ik met een positief gevoel terug op deze ervaring. Ik merk dat ik het werk in de IT-sector graag doe, wat mij bevestigt dat ik de juiste studiekeuze heb gemaakt. Ook het samenwerken in een team vond ik erg fijn. Je kan elkaar goed aanvullen en samen tot sterke oplossingen komen. Bovendien heb ik gemerkt dat ik de motivatie heb om door te zetten bij problemen en om steeds naar alternatieven te zoeken, in plaats van meteen op te geven.</p>
+    <p>Een zwakker punt waar ik me bewust van ben, is mijn ongeduld. Ik wil vaak snel vooruitgang zien, maar dat is niet altijd realistisch. Het is iets waar ik verder aan wil werken, zodat ik daar beter mee kan omgaan.</p>
+    <p>Tijdens de stage waren er veel linken met de opleiding. De kennis en vaardigheden die ik daar heb opgedaan, kon ik goed toepassen, ook binnen het project waar ik aan werkte.</p>
+    <p>Ik heb deze opdracht gekozen voor mijn portfolio omdat het voor mij een bijzondere ervaring was waar ik met trots op terugkijk. Het was een unieke kans en ik ben blij dat ik die met beide handen heb gegrepen.</p>
+
+    <div class="multi-image">
+      <img src="images/stage1.png" alt="Stage afbeelding 1">
+      <img src="images/stage2.png" alt="Stage afbeelding 2">
+    </div>
   </section>
+
   <footer>
     <p>&copy; 2025 Maxim Meus • Portfolio I-Talent</p>
   </footer>
