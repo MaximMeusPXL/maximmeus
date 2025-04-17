@@ -59,26 +59,33 @@
   grid-template-areas:
     "left right"
     "bottom bottom";
-  gap: 1rem;
-  max-width: 600px;
-  margin: 3rem auto;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 4rem auto;
   justify-items: center;
 }
+
 .inverted-triangle-gallery img {
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
 }
 
 .inverted-triangle-gallery img:nth-child(1),
 .inverted-triangle-gallery img:nth-child(2) {
-  width: 100%;
-  max-width: 500px; /* GROTERE BOVENSTE */
+  max-width: 380px;
+  height: auto;
 }
 
 .inverted-triangle-gallery img:nth-child(3) {
-  width: 100%;
-  max-width: 250px; /* ONDERSTE MAG KLEINER */
+  max-width: 260px;
+  height: auto;
 }
+
+.inverted-triangle-gallery img:hover {
+  transform: scale(1.03);
+}
+
 
 .inverted-triangle-gallery img:nth-child(1) { grid-area: left; }
 .inverted-triangle-gallery img:nth-child(2) { grid-area: right; }
