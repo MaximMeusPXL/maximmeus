@@ -65,11 +65,21 @@
   justify-items: center;
 }
 .inverted-triangle-gallery img {
-  width: 100%;
-  max-width: 250px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
+.inverted-triangle-gallery img:nth-child(1),
+.inverted-triangle-gallery img:nth-child(2) {
+  width: 100%;
+  max-width: 350px; /* GROTERE BOVENSTE */
+}
+
+.inverted-triangle-gallery img:nth-child(3) {
+  width: 100%;
+  max-width: 250px; /* ONDERSTE MAG KLEINER */
+}
+
 .inverted-triangle-gallery img:nth-child(1) { grid-area: left; }
 .inverted-triangle-gallery img:nth-child(2) { grid-area: right; }
 .inverted-triangle-gallery img:nth-child(3) { grid-area: bottom; }
