@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -17,23 +16,44 @@
       background-color: #222;
       color: white;
       padding: 2rem;
+    }
+    header .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 80px;
+    }
+    header .title {
+      flex-grow: 1;
       text-align: center;
     }
     nav {
       display: flex;
       justify-content: center;
+      gap: 1rem;
       background: #444;
       padding: 1rem;
       flex-wrap: wrap;
     }
     nav a {
+      padding: 0.75rem 1.5rem;
+      background-color: #1e90ff;
       color: white;
-      text-decoration: none;
-      margin: 0.5rem 1rem;
       font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     nav a:hover {
-      text-decoration: underline;
+      background-color: #0d6efd;
+      transform: scale(1.05);
+    }
+    nav a.active {
+      background-color: #0b75e0;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     }
     section {
       max-width: 1000px;
@@ -56,21 +76,21 @@
   </style>
 </head>
 <body>
-    <header>
-        <div class="top-bar" style="display: flex; align-items: center; justify-content: space-between;">
-          <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
-            <img src="images/pxl.png" alt="Schoollogo" style="height: 80px;">
-          </div>
-          <div class="title" style="flex-grow: 1; text-align: center;">
-            <h1>Portfolio Maxim Meus</h1>
-            <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
-          </div>
-          <div style="width: 100px;"></div>
-        </div>
-      </header>
+  <header>
+    <div class="top-bar">
+      <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
+        <img src="images/pxl.png" alt="Schoollogo">
+      </div>
+      <div class="title">
+        <h1>Portfolio Maxim Meus</h1>
+        <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
+      </div>
+      <div style="width: 100px;"></div>
+    </div>
+  </header>
   <nav>
     <a href="index.html">Voorstelling</a>
-    <a href="activiteiten.html">Activiteiten</a>
+    <a href="activiteiten.html" class="active">Activiteiten</a>
     <a href="selectie.html">Selectie</a>
     <a href="reflectie.html">Eindreflectie</a>
   </nav>
@@ -85,7 +105,7 @@
         <li><strong>Gluo:</strong> DevSecOps Workshop met GitLab (13/11/2024)</li>
         <li><strong>Cegeka:</strong> Bezoek aan datacenter (20/11/2024)</li>
         <li><strong>Politie:</strong> Intro into Digital Forensics (04/12/2024)</li>
-      </ul>
+    </ul>
 
     <h2>Overzicht Innovatie</h2>
     <ul>
@@ -94,17 +114,17 @@
     </ul>
 
     <h2>Persoonlijke ontwikkeling</h2>
-     <ul>
-       <li><strong>Projectweek 2TIN:</strong> Softskills, netwerken, LinkedIn, feedback en pitchsessies (12/02 – 16/02/2024)</li>
-       <li><strong>POP-sessie 2TIN:</strong> Brein aan het werk! Niet storen! (27/02/2024)</li>
-       <li><strong>POP-sessie 2TIN:</strong> POPping, over smartphone-gebruik (27/02/2024)</li>
-       <li><strong>POP-sessie 3TIN:</strong> My Team and I (09/10/2024)</li>
-     </ul>
- 
-     <h2>Internationalisering</h2>
-     <ul>
-       <li><strong>Internationale stage:</strong> SQLI Spain, Valencia – Ontwikkeling chatbot in Azure ter ondersteuning van IT-teams (22/02 – 31/05/2025)</li>
-     </ul>
+    <ul>
+        <li><strong>Projectweek 2TIN:</strong> Softskills, netwerken, LinkedIn, feedback en pitchsessies (12/02 – 16/02/2024)</li>
+        <li><strong>POP-sessie 2TIN:</strong> Brein aan het werk! Niet storen! (27/02/2024)</li>
+        <li><strong>POP-sessie 2TIN:</strong> POPping, over smartphone-gebruik (27/02/2024)</li>
+        <li><strong>POP-sessie 3TIN:</strong> My Team and I (09/10/2024)</li>
+    </ul>
+
+    <h2>Internationalisering</h2>
+    <ul>
+        <li><strong>Internationale stage:</strong> SQLI Spain, Valencia – Ontwikkeling chatbot in Azure ter ondersteuning van IT-teams (22/02 – 31/05/2025)</li>
+    </ul>
   </section>
   <footer>
     <p>&copy; 2025 Maxim Meus • Portfolio I-Talent</p>

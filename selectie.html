@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -17,23 +16,44 @@
       background-color: #222;
       color: white;
       padding: 2rem;
+    }
+    header .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 80px;
+    }
+    header .title {
+      flex-grow: 1;
       text-align: center;
     }
     nav {
       display: flex;
       justify-content: center;
+      gap: 1rem;
       background: #444;
       padding: 1rem;
       flex-wrap: wrap;
     }
     nav a {
+      padding: 0.75rem 1.5rem;
+      background-color: #1e90ff;
       color: white;
-      text-decoration: none;
-      margin: 0.5rem 1rem;
       font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     nav a:hover {
-      text-decoration: underline;
+      background-color: #0d6efd;
+      transform: scale(1.05);
+    }
+    nav a.active {
+      background-color: #0b75e0;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     }
     section {
       max-width: 1000px;
@@ -53,62 +73,57 @@
       color: white;
       margin-top: 3rem;
     }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .activity-button {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .activity-button:hover {
+      background-color: #0d6efd;
+      transform: scale(1.03);
+    }
   </style>
 </head>
 <body>
-    <header>
-        <div class="top-bar" style="display: flex; align-items: center; justify-content: space-between;">
-          <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
-            <img src="images/pxl.png" alt="Schoollogo" style="height: 80px;">
-          </div>
-          <div class="title" style="flex-grow: 1; text-align: center;">
-            <h1>Portfolio Maxim Meus</h1>
-            <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
-          </div>
-          <div style="width: 100px;"></div>
-        </div>
-      </header>
+  <header>
+    <div class="top-bar">
+      <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
+        <img src="images/pxl.png" alt="Schoollogo">
+      </div>
+      <div class="title">
+        <h1>Portfolio Maxim Meus</h1>
+        <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
+      </div>
+      <div style="width: 100px;"></div>
+    </div>
+  </header>
   <nav>
     <a href="index.html">Voorstelling</a>
     <a href="activiteiten.html">Activiteiten</a>
-    <a href="selectie.html">Selectie</a>
+    <a href="selectie.html" class="active">Selectie</a>
     <a href="reflectie.html">Eindreflectie</a>
   </nav>
   <section>
-    
-<h2>Selectie van Activiteiten</h2>
-<p>Kies een activiteit om de gehele activiteit te bekijken:</p>
-<div class="button-container">
-  <a href="hackathon.html" class="activity-button">🚀 Hackathon – Hack the Future</a>
-  <a href="stage.html" class="activity-button">🌍 Internationale Stage – SQLI Valencia</a>
-  <a href="pop.html" class="activity-button">🤝 POP-sessie 3TIN – My Team and I</a>
-</div>
-
-<style>
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  .activity-button {
-    display: inline-block;
-    padding: 1rem 1.5rem;
-    background-color: #1e90ff;
-    color: white;
-    font-weight: bold;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  .activity-button:hover {
-    background-color: #0d6efd;
-    transform: scale(1.03);
-  }
-</style>
-
+    <h2>Selectie van Activiteiten</h2>
+    <p>Kies een activiteit om de gehele activiteit te bekijken:</p>
+    <div class="button-container">
+      <a href="hackathon.html" class="activity-button">🚀 Hackathon – Hack the Future</a>
+      <a href="stage.html" class="activity-button">🌍 Internationale Stage – SQLI Valencia</a>
+      <a href="pop.html" class="activity-button">🤝 POP-sessie 3TIN – My Team and I</a>
+    </div>
   </section>
   <footer>
     <p>&copy; 2025 Maxim Meus • Portfolio I-Talent</p>
