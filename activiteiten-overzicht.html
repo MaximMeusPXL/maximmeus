@@ -51,6 +51,26 @@
       background-color: #0d6efd;
       transform: scale(1.05);
     }
+    .back-link-top {
+      text-align: center;
+      margin: 2rem 0 0;
+    }
+    .activity-button {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .activity-button:hover {
+      background-color: #0d6efd;
+      transform: scale(1.03);
+    }
     section {
       max-width: 1000px;
       margin: 2rem auto;
@@ -70,31 +90,11 @@
       border-radius: 8px;
     }
     .activity h3 {
-      margin: 0 0 0.5rem;
+      margin-top: 0;
       color: #0d6efd;
     }
     .activity p {
       margin: 0.25rem 0;
-    }
-    .back-link {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .activity-button {
-      display: inline-block;
-      padding: 1rem 1.5rem;
-      background-color: #1e90ff;
-      color: white;
-      font-weight: bold;
-      border-radius: 10px;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .activity-button:hover {
-      background-color: #0d6efd;
-      transform: scale(1.03);
     }
     footer {
       text-align: center;
@@ -118,12 +118,17 @@
       <div style="width: 100px;"></div>
     </div>
   </header>
+
   <nav>
     <a href="index.html">Voorstelling</a>
     <a href="activiteiten.html">Activiteiten</a>
     <a href="selectie.html">Selectie</a>
     <a href="reflectie.html">Eindreflectie</a>
   </nav>
+
+  <div class="back-link-top">
+    <a href="activiteiten.html" class="activity-button">⬅️ Ga terug naar Activiteiten</a>
+  </div>
 
   <section>
     <h2>📋 Overzicht Activiteiten</h2>
@@ -182,10 +187,6 @@
       <p><strong>Korte omschrijving:</strong> Oplossen van een gesimuleerde politiezaak met forensische tools na een inleidende briefing.</p>
       <p><strong>Locatie activiteit:</strong> Hogeschool PXL</p>
       <p><strong>Datum:</strong> 04/12/2024, 3 uren</p>
-    </div>
-
-    <div class="back-link">
-      <a href="activiteiten.html" class="activity-button">⬅️ Ga terug naar Activiteiten</a>
     </div>
   </section>
 
