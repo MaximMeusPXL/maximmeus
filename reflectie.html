@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -17,23 +16,44 @@
       background-color: #222;
       color: white;
       padding: 2rem;
+    }
+    header .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 80px;
+    }
+    header .title {
+      flex-grow: 1;
       text-align: center;
     }
     nav {
       display: flex;
       justify-content: center;
+      gap: 1rem;
       background: #444;
       padding: 1rem;
       flex-wrap: wrap;
     }
     nav a {
+      padding: 0.75rem 1.5rem;
+      background-color: #1e90ff;
       color: white;
-      text-decoration: none;
-      margin: 0.5rem 1rem;
       font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     nav a:hover {
-      text-decoration: underline;
+      background-color: #0d6efd;
+      transform: scale(1.05);
+    }
+    nav a.active {
+      background-color: #0b75e0;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     }
     section {
       max-width: 1000px;
@@ -63,54 +83,43 @@
   </style>
 </head>
 <body>
-    <header>
-        <div class="top-bar" style="display: flex; align-items: center; justify-content: space-between;">
-          <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
-            <img src="images/pxl.png" alt="Schoollogo" style="height: 80px;">
-          </div>
-          <div class="title" style="flex-grow: 1; text-align: center;">
-            <h1>Portfolio Maxim Meus</h1>
-            <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
-          </div>
-          <div style="width: 100px;"></div>
-        </div>
-      </header>
+  <header>
+    <div class="top-bar">
+      <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
+        <img src="images/pxl.png" alt="Schoollogo">
+      </div>
+      <div class="title">
+        <h1>Portfolio Maxim Meus</h1>
+        <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
+      </div>
+      <div style="width: 100px;"></div>
+    </div>
+  </header>
   <nav>
     <a href="index.html">Voorstelling</a>
     <a href="activiteiten.html">Activiteiten</a>
     <a href="selectie.html">Selectie</a>
-    <a href="reflectie.html">Eindreflectie</a>
+    <a href="reflectie.html" class="active">Eindreflectie</a>
   </nav>
   <section>
     <h2>Eindreflectie</h2>
     <p>
       Toen ik aan deze opleiding begon, had ik geen specifieke doelen. Ik had ook geen achtergrond in IT. Ik wist hoe een computer werkte, en daar stopte het ongeveer. Soft skills? Nog nooit van gehoord. Alles was nieuw. Ik ben er gewoon ingestapt met een gezonde nieuwsgierigheid, en de hoop dat ik mijn weg wel zou vinden. Intussen is die hoop werkelijkheid geworden.<br><br>
-  
       Ik ben tijdens deze opleiding gegroeid op manieren die ik op voorhand niet kon inschatten. Niet alleen qua kennis, maar ook als persoon. Waar ik in het begin vooral op zoek was naar houvast, heb ik nu vertrouwen in mijn kunnen. Ik weet intussen hoe ik in een team functioneer, wat mijn sterktes zijn, en waar ik nog in wil groeien.<br><br>
-  
       Technisch heb ik veel geleerd. Vooral in het werken met cloudomgevingen zoals Azure en AWS, het schrijven van code voor automatisatie en integraties, en het opzetten van DevOps-praktijken zoals CI/CD-pipelines en containerbeheer. Die technische skills vormen vandaag een stevige basis om op verder te bouwen. Maar de grootste verrassing zat voor mij in het ontdekken van soft skills. Samenwerken, communiceren, feedback geven en ontvangen, jezelf leren kennen… dat waren geen vakken op papier, maar lessen die in de praktijk vorm kregen: tijdens projecten, POP-sessies, de stage, en zelfs tijdens de hackathon.<br><br>
-  
       Ik ben iemand die snel schakelt, die goed functioneert in een dynamische omgeving, en die het beste uit zichzelf haalt wanneer de structuur duidelijk is. In een team ben ik actief en motiverend, en ik merk dat mensen zich op hun gemak voelen wanneer ik die positieve sfeer mee help creëren. Tegelijk heb ik gemerkt dat ik soms te snel vooruit wil, en dat ik het moeilijk vind als dingen niet meteen vooruitgaan. Dat is een werkpunt voor mij. Maar ook dat besef is deel van mijn groei.<br><br>
-  
       De stage in Valencia was een kantelpunt. Daar heb ik geleerd wat het betekent om in een echte werkomgeving te functioneren, met internationale collega’s, culturele verschillen en échte deadlines. Ik heb geleerd om zelfstandig te werken, geduld te hebben, en om telkens oplossingen te blijven zoeken, zelfs als het niet vanzelf gaat. Die ervaring heeft me niet alleen professioneel gevormd, maar ook als mens.<br><br>
-  
       Als ik kijk naar de X-factor van Hogeschool PXL, zie ik dat die nauw aansluit bij mijn traject. Passie heb ik onderweg ontwikkeld door te doen, te falen, opnieuw te proberen en uiteindelijk trots te zijn op wat ik bereikt heb. Empathie kwam in beeld tijdens groepsopdrachten, projectweken en stage-interviews. Ik ben gaan luisteren, écht luisteren, naar anderen.<br><br>
-  
       Ondernemend en innovatief durven zijn heb ik geoefend in de hackathon en tijdens de stageopdracht met de chatbot. Ik ben beginnen experimenteren, durfde beslissingen nemen en leerde omgaan met het onbekende.<br><br>
-  
       Internationaal samenwerken sprak vanzelf in Valencia. Daar werd samenwerken ineens iets veel breder dan “gewoon goed kunnen overleggen”: het ging over cultuur begrijpen, flexibel zijn, open communiceren. Die ervaring neem ik voor altijd mee.<br><br>
-  
       En ook de multidisciplinariteit heb ik gevoeld. Door technologie te combineren met communicatie, empathie, creatief denken, research… kwam ik tot oplossingen die verder gingen dan enkel het technische.<br><br>
-  
       De X-factor was voor mij dus geen abstract model, maar iets dat ik heb leren toepassen zonder dat ik het altijd besefte. Een kompas dat me hielp navigeren, van nul ervaring naar iemand die klaar is voor het werkveld.<br><br>
-  
       In de toekomst wil ik blijven leren. Nieuwe technologieën ontdekken, me verdiepen in cloud en DevOps, sterker worden in programmeren, en zeker certificaten behalen. Ik zoek een job waar ik mijn talenten kan inzetten, waar werk en privé in balans zijn, en waar ik met plezier naartoe ga.<br><br>
-  
       Ik ben blij dat ik dit traject ben aangegaan, ook al wist ik niet goed waar ik aan begon. Net daardoor is het zo waardevol geworden.
     </p>
     <div style="text-align: center;">
-        <img src="images/eind.png" alt="X-factor" class="factor-image">
-      </div>
+      <img src="images/eind.png" alt="X-factor" class="factor-image">
+    </div>
   </section>  
   <footer>
     <p>&copy; 2025 Maxim Meus • Portfolio I-Talent</p>
