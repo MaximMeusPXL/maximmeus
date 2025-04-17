@@ -56,15 +56,34 @@
       box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     }
     section {
-      max-width: 1000px;
+      max-width: 800px;
       margin: 2rem auto;
       padding: 1rem;
       background: white;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    h1, h2, h3, h4 {
-      color: #1e90ff;
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .activity-button {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .activity-button:hover {
+      background-color: #0d6efd;
+      transform: scale(1.03);
     }
     footer {
       text-align: center;
@@ -95,36 +114,14 @@
     <a href="reflectie.html">Eindreflectie</a>
   </nav>
   <section>
-    <h2>Overzicht Activiteiten</h2>
-    <ul>
-        <li><strong>Openline:</strong> Innovatie in netwerkbeheer binnen Managed Services (14/05/2024)</li>
-        <li><strong>Politie:</strong> Digitaal onderzoek, forensics en cybercrime (07/05/2024)</li>
-        <li><strong>Ordina:</strong> CI/CD use case (16/04/2024)</li>
-        <li><strong>Toreon:</strong> Ethical hacking workshop (19/03/2024)</li>
-        <li><strong>IBM:</strong> GenAI, Prompt Engineering en Quantum Computing (06/11/2024)</li>
-        <li><strong>Gluo:</strong> DevSecOps Workshop met GitLab (13/11/2024)</li>
-        <li><strong>Cegeka:</strong> Bezoek aan datacenter (20/11/2024)</li>
-        <li><strong>Politie:</strong> Intro into Digital Forensics (04/12/2024)</li>
-    </ul>
-
-    <h2>Overzicht Innovatie</h2>
-    <ul>
-        <li><strong>Innovatieroute Cloud & Security:</strong> Fortinet SD-WAN, threat hunting met Cloudar en security sessie van Resilix (24/09, 08/10, 15/10/2024)</li>
-        <li><strong>Hackathon "Hack The Future – Among The Stars":</strong> Opdracht in team rond AWS, SpaceX APIs en NASA data (19/11/2024)</li>
-    </ul>
-
-    <h2>Persoonlijke ontwikkeling</h2>
-    <ul>
-        <li><strong>Projectweek 2TIN:</strong> Softskills, netwerken, LinkedIn, feedback en pitchsessies (12/02 – 16/02/2024)</li>
-        <li><strong>POP-sessie 2TIN:</strong> Brein aan het werk! Niet storen! (27/02/2024)</li>
-        <li><strong>POP-sessie 2TIN:</strong> POPping, over smartphone-gebruik (27/02/2024)</li>
-        <li><strong>POP-sessie 3TIN:</strong> My Team and I (09/10/2024)</li>
-    </ul>
-
-    <h2>Internationalisering</h2>
-    <ul>
-        <li><strong>Internationale stage:</strong> SQLI Spain, Valencia – Ontwikkeling chatbot in Azure ter ondersteuning van IT-teams (22/02 – 31/05/2025)</li>
-    </ul>
+    <h2>Activiteiten</h2>
+    <p>Kies een categorie om de bijhorende activiteiten te bekijken:</p>
+    <div class="button-container">
+      <a href="activiteiten-overzicht.html" class="activity-button">📋 Overzicht Activiteiten</a>
+      <a href="innovatie.html" class="activity-button">💡 Overzicht Innovatie</a>
+      <a href="ontwikkeling.html" class="activity-button">🌱 Persoonlijke Ontwikkeling</a>
+      <a href="internationalisering.html" class="activity-button">🌍 Internationalisering</a>
+    </div>
   </section>
   <footer>
     <p>&copy; 2025 Maxim Meus • Portfolio I-Talent</p>
