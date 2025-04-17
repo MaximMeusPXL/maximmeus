@@ -53,6 +53,27 @@
       color: white;
       margin-top: 3rem;
     }
+    .inverted-triangle-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "left right"
+    "bottom bottom";
+  gap: 1rem;
+  max-width: 600px;
+  margin: 3rem auto;
+  justify-items: center;
+}
+.inverted-triangle-gallery img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.inverted-triangle-gallery img:nth-child(1) { grid-area: left; }
+.inverted-triangle-gallery img:nth-child(2) { grid-area: right; }
+.inverted-triangle-gallery img:nth-child(3) { grid-area: bottom; }
+
   </style>
 </head>
 <body>
@@ -96,6 +117,13 @@
       transform: scale(1.03);
     }
   </style>
+
+<div class="inverted-triangle-gallery">
+  <img src="images/hackaton.jpg" alt="Afbeelding 2">
+  <img src="images/hackaton2.jpg" alt="Afbeelding 3">
+  <img src="images/hackaton3.jpg" alt="Afbeelding 1">
+</div>
+
   
   <section>
     <h2>Hackathon – Hack the Future</h2>
