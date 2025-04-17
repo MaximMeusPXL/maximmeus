@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📋 Overzicht Activiteiten</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 2rem;
+    }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .top-bar img {
+      height: 80px;
+    }
+    .top-bar .title {
+      flex-grow: 1;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      background: #444;
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      padding: 0.75rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    nav a:hover {
+      background-color: #0d6efd;
+      transform: scale(1.05);
+    }
+    .back-link-top {
+      text-align: center;
+      margin: 2rem 0 0;
+    }
+    .activity-button {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .activity-button:hover {
+      background-color: #0d6efd;
+      transform: scale(1.03);
+    }
+    section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #1e90ff;
+    }
+    .activity {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-left: 5px solid #1e90ff;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+    .activity h3 {
+      margin-top: 0;
+      color: #0d6efd;
+    }
+    .activity p {
+      margin: 0.25rem 0;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #222;
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
+        <img src="images/pxl.png" alt="Schoollogo">
+      </div>
+      <div class="title">
+        <h1>Portfolio Maxim Meus</h1>
+        <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
+      </div>
+      <div style="width: 100px;"></div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Voorstelling</a>
+    <a href="activiteiten.html">Activiteiten</a>
+    <a href="selectie.html">Selectie</a>
+    <a href="reflectie.html">Eindreflectie</a>
+  </nav>
+
+  <div class="back-link-top">
+    <a href="activiteiten.html" class="activity-button">⬅️ Ga terug naar Activiteiten</a>
+  </div>
+
+  <section>
+    <h2>🚀 Overzicht Innovatie</h2>
+
+    <div class="activity">
+      <h3>1. Innovatieroute – Cloud & Security</h3>
+      <p><strong>Korte omschrijving:</strong> Deze innovatieroute was verspreid over drie dagen met verschillende sessies. We kregen opdrachten en hands-on ervaring met Fortinet SD-WAN, threat hunting en incident response in AWS door Cloudar, en een cybersecuritysessie van Resilix.</p>
+      <p><strong>Locatie activiteit:</strong> Hogeschool PXL</p>
+      <p><strong>Data en duur:</strong> 24/09/2024, 08/10/2024, 15/10/2024 — 8 uren per dag</p>
+    </div>
+
+    <div class="activity">
+      <h3>2. Hackathon – Hack The Future: Among The Stars</h3>
+      <p><strong>Korte omschrijving:</strong> Hackathon georganiseerd in Antwerpen waarbij we in teams werkten rond cloudopdrachten. We werkten in categorieën aan technische uitdagingen op basis van cloudtechnologieën.</p>
+      <p><strong>Locatie activiteit:</strong> Flanders Meeting And Convention Center Antwerpen</p>
+      <p><strong>Datum en duur:</strong> 19/11/2024, 13 uren</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Maxim Meus • Portfolio I-Talent</p>
+  </footer>
+</body>
+</html>
