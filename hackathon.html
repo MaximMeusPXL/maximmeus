@@ -55,32 +55,38 @@
     }
     .inverted-triangle-gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   grid-template-areas:
     "left right"
     "bottom bottom";
   gap: 2rem;
-  max-width: 800px;
-  margin: 4rem auto;
-  justify-items: center;
+  max-width: 100%;
+  justify-content: center;
+  align-items: start;
+  margin: 3rem auto 0 auto;
 }
 
 .inverted-triangle-gallery img {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
+  margin: 0 auto; /* ✅ de bonus fix */
 }
 
 .inverted-triangle-gallery img:nth-child(1) {
+  grid-area: left;
   max-width: 380px;
   height: auto;
 }
+
 .inverted-triangle-gallery img:nth-child(2) {
+  grid-area: right;
   max-width: 500px;
   height: auto;
 }
 
 .inverted-triangle-gallery img:nth-child(3) {
+  grid-area: bottom;
   max-width: 260px;
   height: auto;
 }
@@ -88,6 +94,7 @@
 .inverted-triangle-gallery img:hover {
   transform: scale(1.03);
 }
+
 
 
 .inverted-triangle-gallery img:nth-child(1) { grid-area: left; }
