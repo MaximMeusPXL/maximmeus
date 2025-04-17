@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>POP-sessie</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
@@ -43,8 +42,38 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    h1, h2, h3, h4 {
+    h1, h2, h3 {
       color: #1e90ff;
+    }
+    .activity-button {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .activity-button:hover {
+      background-color: #0d6efd;
+      transform: scale(1.03);
+    }
+    .single-image {
+      margin: 2rem auto 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+    .single-image img {
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+    .single-image img:hover {
+      transform: scale(1.03);
     }
     footer {
       text-align: center;
@@ -59,7 +88,7 @@
   <header>
     <div class="top-bar" style="display: flex; align-items: center; justify-content: space-between;">
       <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
-        <img src="images/pxl.png" alt="Schoollogo" style="height: 80px;">
+        <img src="images/pxl.png" alt="Schoollogo" style="height: 80px;" />
       </div>
       <div class="title" style="flex-grow: 1; text-align: center;">
         <h1>Portfolio Maxim Meus</h1>
@@ -74,12 +103,38 @@
     <a href="selectie.html">Selectie</a>
     <a href="reflectie.html">Eindreflectie</a>
   </nav>
-  <section>
-    <h2>POP-sessie 3TIN – My Team and I</h2><p>Tijdens deze POP-sessie werkten de deelnemers in teamverband rond het IT-project. Door middel van interactieve opdrachten werd er stilgestaan bij factoren die een positieve of negatieve invloed kunnen hebben op samenwerking binnen een team...
 
-[VERDER MET DE VOLLEDIGE REFLECTIETEKST UIT DOCUMENT]
-</p>
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="selectie.html" class="activity-button">⬅️ Ga terug naar selectie</a>
+  </div>
+
+  <section>
+    <h2>POP-sessie – My Team and I</h2>
+
+    <h3>Omschrijving:</h3>
+    <p>Tijdens deze POP-sessie werkten de deelnemers in teamverband rond het IT-project. Door middel van interactieve opdrachten werd er stilgestaan bij factoren die een positieve of negatieve invloed kunnen hebben op samenwerking binnen een team. De sessie bood de kans om elkaar beter te leren kennen en teamdynamiek te versterken.</p>
+
+    <h3>Kern:</h3>
+    <p>Voor het IT-project werden we per bedrijf in een vaste groep ingedeeld. Deze POP-sessie was specifiek bedoeld voor diezelfde teams, om elkaar beter te leren kennen en te reflecteren op samenwerking. Aangezien een project veel samenwerking vereist, kunnen er zowel positieve als negatieve situaties ontstaan, zoals frustraties of misverstanden. Tegelijkertijd kan een goede teamsfeer net zorgen voor vlot en plezierig samenwerken. Het belang van een sterke groepsdynamiek werd tijdens deze sessie duidelijk in de verf gezet.</p>
+    <p>Bij aankomst hadden we als team al afgesproken om samen te zitten en even te praten, iets wat we overigens elke ochtend deden binnen het project. Dat zorgde voor een losse en open sfeer, wat volgens ons belangrijk was om de onderlinge samenwerking goed te houden.</p>
+    <p>De sessie startte met een korte uitleg. Vervolgens kregen we een blanco driehoek en vijf kernwoorden. Als team moesten we deze woorden rangschikken binnen de driehoek, op basis van hoe belangrijk wij ze vonden binnen onze samenwerking. Al snel merkten we dat we grotendeels dezelfde visie hadden, wat op zich al een positief signaal was. Alleen over de plaatsing van twee begrippen ‘verantwoordelijkheid’ en ‘vertrouwen’ ontstond enige discussie, aangezien beide erg belangrijk leken. We gingen hierover in gesprek, wat leidde tot een constructieve discussie waarin iedereen zijn mening kon geven. Uiteindelijk kwamen we tot een gezamenlijk besluit.</p>
+    <p>Daarna bespraken we met de hele groep hoe elk team hun driehoek had ingevuld. Elk groepje lichtte toe welke keuzes ze hadden gemaakt en waarom. Het was interessant om te zien hoe verschillend elk team bepaalde begrippen waardeerde en hoe dit afhankelijk was van de groepsdynamiek en ervaringen.</p>
+    <p>Na deze bespreking waren er verschillende praktische opdrachten verspreid over het lokaal, waarvan we er twee mochten kiezen. Onze eerste opdracht vond plaats op een zeil dat verdeeld was in een blauw en een groen gedeelte. Met zes personen stonden we op het blauwe deel, en de bedoeling was om het volledige zeil om te draaien zonder eraf te stappen. Dankzij duidelijke communicatie en goed overleg slaagden we hier vrij snel in, waarna we meteen doorgingen naar een tweede opdracht.</p>
+    <p>De volgende opdracht was een 3D-puzzel die we eerst met voorbeeld moesten opbouwen en daarna zonder. Deze taak vroeg meer tijd, maar opnieuw kwamen we er als team goed uit. Heldere communicatie en logisch redeneren speelden hier een grote rol.</p>
+    <p>Tot slot namen we nog deel aan een derde opdracht, waarbij we op zes balken moesten staan. Elke balk had een nummer, en het doel was om ze in de juiste volgorde op de grond te plaatsen. De uitdaging was dat er telkens maar één balk tegelijk in de lucht mocht zijn, wat betekende dat we als team voortdurend moesten samenwerken, goed moesten communiceren en flexibel moesten bewegen. Deze opdracht vereiste niet alleen logisch nadenken, maar ook coördinatie en evenwicht. Hoewel het een van de moeilijkere opdrachten was, slaagden we er toch in om ze succesvol af te ronden.</p>
+    <p>Deze POP-sessie was bijzonder waardevol om de groepssamenwerking te versterken en inzicht te krijgen in hoe we als team functioneren. Door de mix van reflectie, discussie en actieve opdrachten konden we onze sterktes verder ontwikkelen en leerden we hoe belangrijk goede communicatie en vertrouwen zijn binnen een team.</p>
+
+    <h3>Reflectie:</h3>
+    <p>Ik vond deze POP-sessie erg positief en zelfs een van de beste sessies die ik als team heb meegemaakt. We konden veel van elkaar leren, niet alleen over hoe iemand denkt, maar ook over hoe samenwerking in een team verloopt en wat daarin belangrijk is. Het was bijzonder waardevol om te zien hoe elk teamlid met zijn of haar eigen inzichten bijdroeg aan een gezamenlijk resultaat.</p>
+    <p>Tijdens de sessie hebben we niet alleen gepraat over samenwerking, maar dit ook echt beleefd via opdrachten die ons uitdaagden op vlak van communicatie, vertrouwen, flexibiliteit en logisch redeneren. Ik heb vooral geleerd hoe belangrijk het is om goed naar elkaar te luisteren en elkaars meningen te respecteren. Een voorbeeld daarvan was de discussie binnen ons team over de rangschikking van de woorden ‘verantwoordelijkheid’ en ‘vertrouwen’. Hoewel we er niet meteen uit waren, gingen we in dialoog en kwamen we uiteindelijk tot een gezamenlijke conclusie. Dat voelde heel constructief aan.</p>
+    <p>Wat ik als sterk punt van mezelf heb ervaren, is mijn vermogen om het team bij elkaar te houden en mee te zorgen voor een goede sfeer. Een zwakker punt waar ik me bewuster van ben geworden, is dat ik soms snel wil doorgaan terwijl het beter is om even stil te staan bij ieders mening of aanpak. Dat heb ik tijdens deze sessie beter leren doseren.</p>
+    <p>De opdrachten hadden duidelijke linken met soft skills die ook in de opleiding aan bod komen, zoals samenwerken, reflecteren en communiceren. Net daarom vond ik deze sessie zo waardevol en heb ik deze gekozen voor mijn portfolio. Ze toonde niet alleen hoe wij als team functioneerden, maar ook hoe ik zelf gegroeid ben in mijn manier van samenwerken.</p>
+
+    <div class="single-image">
+      <img src="images/pop.png" alt="POP-sessie afbeelding">
+    </div>
   </section>
+
   <footer>
     <p>&copy; 2025 Maxim Meus • Portfolio I-Talent</p>
   </footer>
