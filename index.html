@@ -318,7 +318,6 @@
         </div>
 
         <div class="bigbtns">
-          <button class="btn btn-primary" id="btnOpen"></button>
           <button class="btn btn-soft" id="btnCompliment">✨ Hier zijn wat complimentjes</button>
         </div>
 
@@ -408,7 +407,6 @@
 
     // ======= Modal =======
     const modal = document.getElementById("modal");
-    document.getElementById("btnOpen").addEventListener("click", () => modal.classList.add("open"));
     document.getElementById("btnClose").addEventListener("click", () => modal.classList.remove("open"));
     modal.addEventListener("click", (e)=> { if(e.target === modal) modal.classList.remove("open"); });
 
