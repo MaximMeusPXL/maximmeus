@@ -295,6 +295,25 @@
     #btnNo{ position:relative; }
 
     .pink-word{ color: var(--pink); font-weight: 900; }
+    
+    /* Pulse animatie */
+    @keyframes pulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .btn {
+      animation: pulse 2s ease-in-out infinite;
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+
+    /* Hover overschrijft tijdelijk de pulse */
+    .btn:hover {
+      animation: none;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    }
+
   </style>
 </head>
 
