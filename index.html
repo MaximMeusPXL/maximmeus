@@ -171,22 +171,37 @@
       font-weight: 900;
       font-size: 14px;
       letter-spacing: 0.2px;
-      transition: transform .12s ease, filter .2s ease, background .2s ease;
+      transition: transform .12s ease, filter .2s ease, background .2s ease, opacity .2s ease;
       user-select:none;
     }
     .btn:active{ transform: translateY(1px) scale(0.99); }
+
+    /* DEFAULT: buttons NOT highlighted */
     .btn-primary{
-      background: linear-gradient(135deg, var(--pink), var(--violet));
-      color: white;
-      box-shadow: 0 14px 40px rgba(255,77,141,0.22);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--text);
+      box-shadow: none;
     }
-    .btn-primary:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+    .btn-primary:hover{
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-1px);
+    }
+
     .btn-soft{
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.14);
       color: var(--text);
     }
     .btn-soft:hover{ background: rgba(255,255,255,0.12); transform: translateY(-1px); }
+
+    /* ACTIVE / SELECTED STATE (only after click) */
+    .btn.selected{
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      color: white;
+      border: 0;
+      box-shadow: 0 14px 40px rgba(255,77,141,0.22);
+    }
 
     .two{
       margin-top: 12px;
@@ -207,12 +222,12 @@
       color: rgba(255,255,255,0.55);
     }
 
-    /* Compliment toast higher (halfway between footer + bottom) */
+    /* Compliment toast higher */
     .toast{
       position: fixed;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 110px; /* << moved up */
+      bottom: 110px;
       background: rgba(255,255,255,0.10);
       border: 1px solid rgba(255,255,255,0.16);
       backdrop-filter: blur(10px);
@@ -261,7 +276,6 @@
       padding: 18px;
       position:relative;
     }
-    .modalbox h2{ margin: 0 0 8px; font-size: 20px; }
     .modalbox p{ margin: 0 0 12px; color: var(--muted); }
     .close{
       position:absolute; right:12px; top:12px;
@@ -280,11 +294,7 @@
     /* no button dodge */
     #btnNo{ position:relative; }
 
-    /* Pink highlight for "Valentijn" */
-    .pink-word{
-      color: var(--pink);
-      font-weight: 900;
-    }
+    .pink-word{ color: var(--pink); font-weight: 900; }
   </style>
 </head>
 
@@ -359,11 +369,9 @@
     </div>
   </div>
 
-  <!-- Modal (no title inside, no copy button) -->
   <div class="modal" id="modal">
     <div class="modalbox">
       <button class="close" id="btnClose">✕</button>
-      <!-- removed h2 -->
       <p id="letter" style="margin-top:6px;">
         Liefste Lottiee,<br><br>
         Ik ben zo blij dat jij in mijn leven bent. Met jou is alles zoveel beter, leuker en gewoon… beter.
@@ -378,14 +386,13 @@
   </div>
 
   <script>
-    // ======= Quick personalisation =======
     const GIRLFRIEND_NAME = "Lottie";
     const YOUR_NAME = "Maxie";
 
     document.getElementById("naam").textContent = GIRLFRIEND_NAME;
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ======= Floating hearts =======
+    // Floating hearts
     const hearts = document.getElementById("hearts");
     const heartCount = 26;
     for (let i=0;i<heartCount;i++){
@@ -405,12 +412,12 @@
       h.style.transform = `translateY(${110 + Math.random()*20}vh) rotate(45deg) scale(${size/14})`;
     }
 
-    // ======= Modal =======
+    // Modal
     const modal = document.getElementById("modal");
     document.getElementById("btnClose").addEventListener("click", () => modal.classList.remove("open"));
     modal.addEventListener("click", (e)=> { if(e.target === modal) modal.classList.remove("open"); });
 
-    // ======= Toast =======
+    // Toast
     const toast = document.getElementById("toast");
     let toastT;
     function showToast(text){
@@ -420,7 +427,7 @@
       toastT = setTimeout(()=> toast.classList.remove("show"), 1600);
     }
 
-    // ======= Compliments =======
+    // Compliments
     const compliments = [
       "Jij bent zooooo moooiiiiii 💗",
       "Jij maakt mijn dagen altijd veeeeeel beter ✨",
@@ -432,17 +439,25 @@
       showToast(compliments[Math.floor(Math.random()*compliments.length)]);
     });
 
-    // ======= Quiz =======
+    // Helper: set selected style inside a group
+    function selectOne(ids, selectedId){
+      ids.forEach(id => document.getElementById(id).classList.remove("selected"));
+      document.getElementById(selectedId).classList.add("selected");
+    }
+
+    // Quiz selection styling + behavior
     const quizResult = document.getElementById("quizResult");
     document.getElementById("btnHer").addEventListener("click", ()=>{
+      selectOne(["btnHer","btnMe"], "btnHer");
       quizResult.textContent = "JAAAAAAAAA DAT BEN JIJJJJJJJJ💖";
       party();
     });
     document.getElementById("btnMe").addEventListener("click", ()=>{
+      selectOne(["btnHer","btnMe"], "btnMe");
       quizResult.textContent = "IK??? NEEEE FOUT ANTWOORD ❤️";
     });
 
-    // ======= The question (yes/no) =======
+    // Valentine question styling + behavior
     const btnNo = document.getElementById("btnNo");
     const noMsg = document.getElementById("noMsg");
     const noLines = [
@@ -454,6 +469,7 @@
 
     btnNo.addEventListener("mouseover", dodge);
     btnNo.addEventListener("click", ()=>{
+      selectOne(["btnYes","btnNo"], "btnNo");
       noMsg.textContent = noLines[Math.floor(Math.random()*noLines.length)];
       dodge();
     });
@@ -468,6 +484,7 @@
     }
 
     document.getElementById("btnYes").addEventListener("click", ()=>{
+      selectOne(["btnYes","btnNo"], "btnYes");
       party(true);
       showToast("YAAAAY 💘");
       const letter = document.getElementById("letter");
@@ -481,7 +498,7 @@
 
     document.getElementById("btnSparkle").addEventListener("click", ()=> party());
 
-    // ======= Confetti =======
+    // Confetti
     const canvas = document.getElementById("confetti");
     const ctx = canvas.getContext("2d");
     let confetti = [];
