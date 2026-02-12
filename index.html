@@ -1,132 +1,715 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voorstelling</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voor jou 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+    :root{
+      --bg1:#0b1020;
+      --bg2:#1a0f2b;
+      --card: rgba(255,255,255,0.08);
+      --stroke: rgba(255,255,255,0.14);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.75);
+      --pink:#ff4d8d;
+      --rose:#ff7ab6;
+      --violet:#7c4dff;
+      --gold:#ffd36e;
     }
 
-    header {
-      background-color: #222;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 800px at 20% 15%, rgba(255,77,141,0.25), transparent 55%),
+        radial-gradient(900px 700px at 80% 20%, rgba(124,77,255,0.25), transparent 55%),
+        radial-gradient(800px 700px at 50% 90%, rgba(255,211,110,0.18), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* floating hearts */
+    .hearts{position:fixed; inset:0; pointer-events:none; overflow:hidden;}
+    .heart{
+      position:absolute;
+      width:14px; height:14px;
+      transform: rotate(45deg);
+      opacity:0.22;
+      animation: floatUp linear infinite;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.35));
+    }
+    .heart:before, .heart:after{
+      content:"";
+      position:absolute;
+      width:14px; height:14px;
+      border-radius:50%;
+      background: var(--rose);
+    }
+    .heart{ background: var(--rose); }
+    .heart:before{ left:-7px; top:0; }
+    .heart:after{ left:0; top:-7px; }
+    @keyframes floatUp{
+      from{ transform: translateY(110vh) rotate(45deg); }
+      to{ transform: translateY(-20vh) rotate(45deg); }
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 70px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 18px 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 60px rgba(0,0,0,0.35);
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .badge{
+      width:44px; height:44px;
+      border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), transparent 45%),
+        linear-gradient(135deg, rgba(255,77,141,0.9), rgba(124,77,255,0.85));
+      border:1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 10px 30px rgba(255,77,141,0.22);
+      display:grid; place-items:center;
+      font-size:20px;
+    }
+    .brand h1{
+      margin:0;
+      font-family:"Pacifico", cursive;
+      font-weight:400;
+      font-size: 22px;
+      letter-spacing:0.2px;
+    }
+    .brand p{ margin:0; color:var(--muted); font-size:13px; }
+
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      transition: transform .15s ease, background .2s ease;
+      user-select:none;
+    }
+    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.10); }
+
+    .hero{
+      margin-top: 22px;
+      padding: 26px 18px;
+      border-radius: 22px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(135deg, rgba(255,77,141,0.16), rgba(124,77,255,0.10));
+      box-shadow: 0 18px 70px rgba(0,0,0,0.38);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(500px 220px at 15% 10%, rgba(255,255,255,0.18), transparent 55%);
+      pointer-events:none;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      nav{ justify-content:flex-start; }
+    }
+
+    .card{
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .title{
+      font-size: clamp(24px, 3.6vw, 44px);
+      line-height:1.05;
+      margin: 4px 0 10px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .chiprow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: var(--rose);
+      box-shadow: 0 0 0 6px rgba(255,122,182,0.14);
+    }
+
+    .bigbtns{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    button{
+      border:0;
+      cursor:pointer;
+      font-family: inherit;
+    }
+    .btn{
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      transition: transform .12s ease, filter .2s ease, background .2s ease;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px) scale(0.99); }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--pink), var(--violet));
       color: white;
-      padding: 2rem;
+      box-shadow: 0 14px 40px rgba(255,77,141,0.22);
+    }
+    .btn-primary:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+    .btn-soft{
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--text);
+    }
+    .btn-soft:hover{ background: rgba(255,255,255,0.12); transform: translateY(-1px); }
+
+    .mini{
+      display:grid;
+      gap:12px;
+    }
+    .mini h3{ margin:0; font-size:16px; letter-spacing:-0.2px; }
+    .mini p{ margin:0; color: var(--muted); font-size:14px; line-height:1.4; }
+
+    .list{
+      margin: 12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .li{
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.16);
+      border: 1px solid rgba(255,255,255,0.10);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .emoji{ font-size:18px; margin-top:1px; }
+    .li strong{ display:block; font-size:14px; }
+    .li span{ color: var(--muted); font-size: 13px; }
+
+    .section{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 860px){ .section{ grid-template-columns: 1fr; } }
+
+    .footer{
+      margin-top: 22px;
+      text-align:center;
+      color: rgba(255,255,255,0.62);
+      font-size: 13px;
+      padding: 18px 0 0;
+    }
+    .smallnote{
+      margin-top:10px;
+      text-align:center;
+      font-size:12px;
+      color: rgba(255,255,255,0.55);
     }
 
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* modal */
+    .modal{
+      position: fixed; inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      z-index: 50;
     }
+    .modal.open{ display:flex; }
+    .modalbox{
+      width: min(720px, 100%);
+      border-radius: 20px;
+      background: rgba(20,16,30,0.92);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 24px 90px rgba(0,0,0,0.65);
+      padding: 18px;
+      position:relative;
+    }
+    .modalbox h2{ margin: 0 0 8px; font-size: 20px; }
+    .modalbox p{ margin: 0 0 12px; color: var(--muted); }
+    .close{
+      position:absolute; right:12px; top:12px;
+      width:38px; height:38px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--text);
+      font-weight:900;
+    }
+    .close:hover{ background: rgba(255,255,255,0.12); }
 
-    .top-bar img {
-      height: 80px;
+    .confetti{
+      position:fixed; inset:0; pointer-events:none; display:none; z-index:60;
     }
+    .confetti.show{ display:block; }
 
-    .top-bar .title {
-      flex-grow: 1;
-      text-align: center;
+    /* tiny toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 18px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(10px);
+      padding: 10px 12px;
+      border-radius: 14px;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 13px;
+      display:none;
+      z-index:70;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.45);
     }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      background: #444;
-      padding: 1rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      padding: 0.75rem 1.5rem;
-      background-color: #1e90ff;
-      color: white;
-      font-weight: bold;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    nav a:hover {
-      background-color: #0d6efd;
-      transform: scale(1.05);
-    }
-
-    nav a.active {
-      background-color: #0b75e0;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    h1, h2, h3, h4 {
-      color: #1e90ff;
-    }
-
-    .profile-image {
-      max-width: 300px;
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      margin-top: 2rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #222;
-      color: white;
-      margin-top: 3rem;
-    }
+    .toast.show{ display:block; }
+    a { color: inherit; }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="top-bar">
-      <div style="width: 100px; display: flex; align-items: center; justify-content: center;">
-        <img src="images/pxl.png" alt="Schoollogo">
+  <div class="hearts" id="hearts"></div>
+  <canvas class="confetti" id="confetti"></canvas>
+  <div class="toast" id="toast">💖</div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="badge">💌</div>
+        <div>
+          <h1>Voor jou</h1>
+          <p>Een mini-website met maxi-liefde ✨</p>
+        </div>
       </div>
-      <div class="title">
-        <h1>Portfolio Maxim Meus</h1>
-        <p>Toegepaste Informatica - Systemen en Netwerkbeheer</p>
+
+      <nav>
+        <a class="pill" href="#liefdesbrief">💖 Liefdesbrief</a>
+        <a class="pill" href="#date">🍓 Date</a>
+        <a class="pill" href="#quiz">🎀 Quiz</a>
+        <a class="pill" href="#vraag">💍 De vraag</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="grid">
+        <div class="card" id="liefdesbrief">
+          <div class="title">Hey <span id="naam">liefste</span> 💗</div>
+          <p class="subtitle">
+            Ik heb dit voor jou gemaakt omdat jij mijn favoriete persoon bent. Altijd.
+          </p>
+
+          <div class="chiprow">
+            <div class="chip"><span class="dot"></span> Jij + ik = mijn geluk</div>
+            <div class="chip"><span class="dot" style="background:var(--gold); box-shadow:0 0 0 6px rgba(255,211,110,0.14)"></span> Extra knuffels inbegrepen</div>
+            <div class="chip"><span class="dot" style="background:var(--violet); box-shadow:0 0 0 6px rgba(124,77,255,0.14)"></span> Onbeperkte kusjes</div>
+          </div>
+
+          <div class="bigbtns">
+            <button class="btn btn-primary" id="btnOpen">📩 Open je geheime brief</button>
+            <button class="btn btn-soft" id="btnCompliment">✨ Geef me een compliment</button>
+          </div>
+
+          <p class="smallnote">
+            Tip: pas de tekst onderaan aan met jullie inside jokes 😄
+          </p>
+        </div>
+
+        <div class="card mini" id="date">
+          <h3>🍓 Date-plan (jij kiest)</h3>
+          <p>Klik en verzamel punten. Hoe meer punten, hoe meer “ja” je krijgt 😌</p>
+
+          <ul class="list" id="dateList">
+            <li class="li" data-points="2">
+              <div class="emoji">🕯️</div>
+              <div><strong>Kaarslicht & cozy avond</strong><span>dekentje + film + snacks</span></div>
+            </li>
+            <li class="li" data-points="3">
+              <div class="emoji">🍝</div>
+              <div><strong>Favoriete eten (jij beslist)</strong><span>ik betaal / ik kook / ik regel</span></div>
+            </li>
+            <li class="li" data-points="2">
+              <div class="emoji">🌆</div>
+              <div><strong>Avondwandeling</strong><span>hand in hand, zonder haast</span></div>
+            </li>
+            <li class="li" data-points="4">
+              <div class="emoji">🎡</div>
+              <div><strong>Mini-avontuur</strong><span>iets nieuws samen proberen</span></div>
+            </li>
+          </ul>
+
+          <div class="chiprow" style="margin-top:12px">
+            <div class="chip">⭐ Score: <span id="score">0</span></div>
+            <div class="chip">🎯 Doel: <span id="goal">7</span></div>
+          </div>
+
+          <div class="bigbtns" style="margin-top:12px">
+            <button class="btn btn-soft" id="btnReset">↩️ Reset</button>
+            <button class="btn btn-primary" id="btnLock">🔒 Plan vastleggen</button>
+          </div>
+        </div>
       </div>
-      <div style="width: 100px;"></div>
+
+      <div class="section">
+        <div class="card" id="quiz">
+          <h3 style="margin:0 0 8px">🎀 Mini-quiz</h3>
+          <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
+            Eerlijk antwoorden: wie is het schattigst?
+          </p>
+          <div class="bigbtns">
+            <button class="btn btn-primary" id="btnHer">Zij 😇</button>
+            <button class="btn btn-soft" id="btnMe">Ik… 🙃</button>
+          </div>
+          <p class="smallnote" id="quizResult" style="margin-top:10px"></p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px">📸 Herinnering</h3>
+          <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
+            Zet hier een foto van jullie samen.
+          </p>
+          <div style="
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            border: 1px dashed rgba(255,255,255,0.20);
+            background: rgba(0,0,0,0.18);
+            display:grid; place-items:center;
+            color: rgba(255,255,255,0.75);
+            font-weight:800;
+            padding: 10px;
+            text-align:center;
+          ">
+            Vervang <code style="opacity:.9">images/us.jpg</code> door jullie foto 💞
+          </div>
+        </div>
+
+        <div class="card" id="vraag">
+          <h3 style="margin:0 0 8px">💍 De vraag</h3>
+          <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
+            Wil je mijn Valentijn zijn?
+          </p>
+          <div class="bigbtns" style="position:relative">
+            <button class="btn btn-primary" id="btnYes">JA!! 💘</button>
+            <button class="btn btn-soft" id="btnNo">Nee 🙈</button>
+          </div>
+          <p class="smallnote" id="noMsg"></p>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <nav>
-    <a href="index.html" class="active">Voorstelling</a>
-    <a href="activiteiten.html">Activiteiten</a>
-    <a href="selectie.html">Selectie</a>
-    <a href="reflectie.html">Eindreflectie</a>
-  </nav>
-
-  <section>
-    <h2>Voorstelling</h2>
-    <p>Ik ben Maxim Meus, laatstejaarsstudent Toegepaste Informatica aan Hogeschool PXL, met als afstudeerrichting Systemen en Netwerkbeheer. Mijn passie voor IT combineer ik met een interesse in reizen, nieuwe culturen ontdekken en muziek maken op de piano. Ook geniet ik van het geluid van racewagens op het circuit.</p>
-    <p>Ik denk intuïtief en reageer snel op nieuwe situaties. Mijn aanpak is spontaan en flexibel, en ik presteer het best in een dynamische omgeving met duidelijke richtlijnen. Ik werk gestructureerd en functioneer optimaal met duidelijke instructies. In interactie ben ik kritisch en zelfverzekerd, overleg graag en weeg situaties goed af. Binnen een team neem ik een actieve en motiverende rol op. Ik ben gedreven en stimuleer samenwerking.</p>
-    <p>Over 3 tot 5 jaar is mijn doel dat ik een stabiele baan heb met een goede werk-privébalans. Ik wil blijven leren en groeien, zodat ik steeds de beste versie van mezelf kan zijn.</p>
-    <div style="text-align: center;">
-      <img src="images/maxim.jpg" alt="Profiel Maxim Meus" class="profile-image">
+    <div class="footer">
+      Gemaakt met ❤️ — en een beetje chaos.
+      <div class="smallnote">© <span id="year"></span> • Jij bent mijn favoriete tabblad.</div>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 <strong>Maxim Meus</strong> • Portfolio I-Talent</p>
-  </footer>
+  <!-- Hidden photo: just drop a file in /images/us.jpg if you want -->
+  <img src="images/us.jpg" alt="" style="display:none" onerror="/* ignore */"/>
+
+  <div class="modal" id="modal">
+    <div class="modalbox">
+      <button class="close" id="btnClose">✕</button>
+      <h2>📩 Geheime brief</h2>
+      <p id="letter">
+        Lieve jij,<br><br>
+        Ik ben zo blij dat jij in mijn leven bent. Met jou is alles lichter, leuker en gewoon… beter.
+        Dankjewel dat je bent wie je bent. ❤️<br><br>
+        P.S. Ik heb een surprise voor je. (Hint: het is een date met mij.)<br><br>
+        <strong>Ik hou van je.</strong>
+      </p>
+      <div class="bigbtns">
+        <button class="btn btn-primary" id="btnCopy">📋 Kopieer tekst</button>
+        <button class="btn btn-soft" id="btnSparkle">✨ Meer magie</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ======= Quick personalisation =======
+    const GIRLFRIEND_NAME = "mijn liefste"; // <-- wijzig dit (bv. "Sofie")
+    const YOUR_NAME = "Maxim";              // <-- wijzig dit
+    const SCORE_GOAL = 7;                  // <-- doelpunten
+
+    document.getElementById("naam").textContent = GIRLFRIEND_NAME;
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("goal").textContent = SCORE_GOAL;
+
+    // ======= Floating hearts generator =======
+    const hearts = document.getElementById("hearts");
+    const heartCount = 26;
+    for (let i=0;i<heartCount;i++){
+      const h = document.createElement("div");
+      h.className = "heart";
+      const left = Math.random()*100;
+      const dur = 6 + Math.random()*10;
+      const delay = -Math.random()*dur;
+      const size = 10 + Math.random()*16;
+      h.style.left = left + "vw";
+      h.style.animationDuration = dur + "s";
+      h.style.animationDelay = delay + "s";
+      h.style.opacity = (0.12 + Math.random()*0.22).toFixed(2);
+      h.style.width = size+"px";
+      h.style.height = size+"px";
+      // match pseudo sizes
+      h.style.setProperty("--s", size);
+      hearts.appendChild(h);
+
+      // tweak pseudo via scale (simple approach)
+      h.style.transform = `translateY(${110 + Math.random()*20}vh) rotate(45deg) scale(${size/14})`;
+    }
+
+    // ======= Modal =======
+    const modal = document.getElementById("modal");
+    document.getElementById("btnOpen").onclick = () => modal.classList.add("open");
+    document.getElementById("btnClose").onclick = () => modal.classList.remove("open");
+    modal.addEventListener("click", (e)=> { if(e.target === modal) modal.classList.remove("open"); });
+
+    // ======= Toast =======
+    const toast = document.getElementById("toast");
+    let toastT;
+    function showToast(text){
+      toast.textContent = text;
+      toast.classList.add("show");
+      clearTimeout(toastT);
+      toastT = setTimeout(()=> toast.classList.remove("show"), 1400);
+    }
+
+    // ======= Compliments =======
+    const compliments = [
+      "Jij bent letterlijk mijn favoriete mens 💗",
+      "Jij maakt gewone dagen bijzonder ✨",
+      "Ik krijg nog steeds vlinders van jou 🦋",
+      "Je lach is mijn zwakke plek 😌",
+      "Samen met jou voelt alles juist ❤️"
+    ];
+    document.getElementById("btnCompliment").onclick = () => {
+      showToast(compliments[Math.floor(Math.random()*compliments.length)]);
+    };
+
+    // ======= Date score list =======
+    let score = 0;
+    const scoreEl = document.getElementById("score");
+    const items = [...document.querySelectorAll("#dateList .li")];
+
+    items.forEach(li => {
+      li.addEventListener("click", ()=>{
+        const pts = Number(li.dataset.points || 0);
+        if(li.dataset.active === "1") return; // already counted
+        li.dataset.active = "1";
+        li.style.background = "linear-gradient(135deg, rgba(255,77,141,0.22), rgba(124,77,255,0.14))";
+        li.style.borderColor = "rgba(255,255,255,0.18)";
+        score += pts;
+        scoreEl.textContent = score;
+        showToast("+" + pts + " ⭐");
+        if(score >= SCORE_GOAL) party();
+      });
+    });
+
+    document.getElementById("btnReset").onclick = ()=>{
+      score = 0; scoreEl.textContent = score;
+      items.forEach(li=>{
+        li.dataset.active = "0";
+        li.style.background = "rgba(0,0,0,0.16)";
+        li.style.borderColor = "rgba(255,255,255,0.10)";
+      });
+      showToast("Reset 💫");
+    };
+
+    document.getElementById("btnLock").onclick = ()=>{
+      if(score === 0) return showToast("Kies eerst iets 😄");
+      showToast("Plan vastgelegd 🔒");
+    };
+
+    // ======= Quiz =======
+    const quizResult = document.getElementById("quizResult");
+    document.getElementById("btnHer").onclick = ()=>{
+      quizResult.textContent = "Correct. Altijd correct. ✅💖";
+      party();
+    };
+    document.getElementById("btnMe").onclick = ()=>{
+      quizResult.textContent = "Sterke poging 😌 Maar… nee. ❤️";
+      showToast("🙃");
+    };
+
+    // ======= The question (yes/no) =======
+    const btnNo = document.getElementById("btnNo");
+    const noMsg = document.getElementById("noMsg");
+    const noLines = [
+      "Nice try 😄",
+      "Deze knop werkt niet vandaag 🙈",
+      "Dat kan ik niet accepteren 😌",
+      "Plot twist: toch JA 💘",
+      "Ik ga even doen alsof ik dat niet zag 😇"
+    ];
+    btnNo.addEventListener("mouseover", dodge);
+    btnNo.addEventListener("click", ()=>{
+      noMsg.textContent = noLines[Math.floor(Math.random()*noLines.length)];
+      dodge();
+    });
+
+    function dodge(){
+      const parent = btnNo.parentElement;
+      const rect = parent.getBoundingClientRect();
+      const bx = Math.random() * Math.max(0, rect.width - btnNo.offsetWidth);
+      const by = Math.random() * Math.max(0, rect.height - btnNo.offsetHeight);
+      btnNo.style.position = "relative";
+      btnNo.style.left = (bx - rect.width/4) + "px";
+      btnNo.style.top = (by - rect.height/4) + "px";
+    }
+
+    document.getElementById("btnYes").onclick = ()=>{
+      party(true);
+      showToast("YAAAAY 💘");
+      // personal message in modal
+      const letter = document.getElementById("letter");
+      letter.innerHTML =
+        `Lieve ${GIRLFRIEND_NAME},<br><br>
+        YESSS! 🥹💖<br>
+        Ik kies jou. Vandaag, morgen, en alle dagen daarna.<br><br>
+        <strong>— ${YOUR_NAME}</strong>`;
+      modal.classList.add("open");
+    };
+
+    // ======= Copy letter =======
+    document.getElementById("btnCopy").onclick = async ()=>{
+      const text = document.getElementById("letter").innerText;
+      try{
+        await navigator.clipboard.writeText(text);
+        showToast("Gekopieerd 📋");
+      }catch{
+        showToast("Copy lukt niet 😅");
+      }
+    };
+
+    document.getElementById("btnSparkle").onclick = ()=> party();
+
+    // ======= Confetti (simple canvas) =======
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    let confetti = [];
+    let anim;
+
+    function resize(){
+      canvas.width = window.innerWidth * devicePixelRatio;
+      canvas.height = window.innerHeight * devicePixelRatio;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+    }
+    window.addEventListener("resize", ()=> {
+      // reset scale safely
+      ctx.setTransform(1,0,0,1,0,0);
+      resize();
+    });
+    resize();
+
+    function party(big=false){
+      canvas.classList.add("show");
+      const count = big ? 220 : 120;
+
+      for(let i=0;i<count;i++){
+        confetti.push({
+          x: Math.random()*window.innerWidth,
+          y: -20 - Math.random()*window.innerHeight*0.3,
+          r: 2 + Math.random()*4,
+          vx: -1.6 + Math.random()*3.2,
+          vy: 2 + Math.random()*4.8,
+          a: Math.random()*Math.PI*2,
+          va: -0.2 + Math.random()*0.4,
+          life: 120 + Math.random()*80
+        });
+      }
+      cancelAnimationFrame(anim);
+      tick();
+      setTimeout(()=> {
+        canvas.classList.remove("show");
+        confetti = [];
+      }, big ? 2200 : 1400);
+    }
+
+    function tick(){
+      anim = requestAnimationFrame(tick);
+      ctx.clearRect(0,0,window.innerWidth, window.innerHeight);
+
+      confetti.forEach(p=>{
+        p.x += p.vx;
+        p.y += p.vy;
+        p.a += p.va;
+        p.life -= 1;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.a);
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life/120));
+        // no fixed colors requested: use random-ish but consistent palette via HSL
+        ctx.fillStyle = `hsl(${(p.x+p.y)%360} 90% 70%)`;
+        ctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.6);
+        ctx.restore();
+      });
+
+      confetti = confetti.filter(p => p.life > 0 && p.y < window.innerHeight + 60);
+      if(confetti.length === 0) cancelAnimationFrame(anim);
+    }
+  </script>
 </body>
 </html>
