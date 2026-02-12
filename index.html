@@ -344,7 +344,7 @@
       <!-- TWO CARDS UNDER: VRAAG + QUIZ (BOTH FULL ROW, SIDE-BY-SIDE) -->
       <div class="two">
         <div class="card" id="vraag">
-          <h3 style="margin:0 0 8px">💍 De vraag</h3>
+          <h3 style="margin:0 0 8px">🌹 De vraag</h3>
           <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
             Wil je mijn Valentijn zijn?
           </p>
@@ -380,15 +380,15 @@
       <button class="close" id="btnClose">✕</button>
       <h2>📩 Geheime brief</h2>
       <p id="letter">
-        Lieve jij,<br><br>
-        Ik ben zo blij dat jij in mijn leven bent. Met jou is alles lichter, leuker en gewoon… beter.
+        Liefste Lottiee,<br><br>
+        Ik ben zo blij dat jij in mijn leven bent. Met jou is alles zoveel beter, leuker en gewoon… beter.
         Dankjewel dat je bent wie je bent. ❤️<br><br>
         <strong>Ik hou van je.</strong><br><br>
         — <strong>Maxim</strong>
       </p>
       <div class="bigbtns">
         <button class="btn btn-primary" id="btnCopy">📋 Kopieer tekst</button>
-        <button class="btn btn-soft" id="btnSparkle">✨ Meer magie</button>
+        <button class="btn btn-soft" id="btnSparkle">✨ Meer sparkles</button>
       </div>
     </div>
   </div>
@@ -464,11 +464,10 @@
     const btnNo = document.getElementById("btnNo");
     const noMsg = document.getElementById("noMsg");
     const noLines = [
-      "Nice try 😄",
-      "Deze knop werkt niet vandaag 🙈",
-      "Dat kan ik niet accepteren 😌",
-      "Plot twist: toch JA 💘",
-      "Ik ga even doen alsof ik dat niet zag 😇"
+      "OHHH waarom probeer je dit! 😄",
+      "STOUT! FOEI! 🙈",
+      "NIET LIEF! Maar ik hou wel van jou hihi 😌",
+      "ALSJEBLIEFFFTTT? 💘",
     ];
     btnNo.addEventListener("mouseover", dodge);
     btnNo.addEventListener("click", ()=>{
@@ -490,10 +489,10 @@
       showToast("YAAAAY 💘");
       const letter = document.getElementById("letter");
       letter.innerHTML =
-        `Lieve ${GIRLFRIEND_NAME},<br><br>
+        `Liefste ${GIRLFRIEND_NAME},<br><br>
         YESSS! 🥹💖<br>
         Ik kies jou. Vandaag, morgen, en alle dagen daarna.<br><br>
-        <strong>— ${YOUR_NAME}</strong>`;
+        <strong>kusjesss jou ${YOUR_NAME}</strong>`;
       modal.classList.add("open");
     };
 
