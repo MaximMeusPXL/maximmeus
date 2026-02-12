@@ -207,6 +207,39 @@
       color: rgba(255,255,255,0.55);
     }
 
+    /* Compliment toast higher (halfway between footer + bottom) */
+    .toast{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 110px; /* << moved up */
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(10px);
+      padding: 10px 12px;
+      border-radius: 14px;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 13px;
+      display:none;
+      z-index:70;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+    }
+    .toast.show{ display:block; }
+
+    .footer{
+      margin-top: 16px;
+      text-align:center;
+      color: rgba(255,255,255,0.62);
+      font-size: 13px;
+      padding: 10px 0 0;
+    }
+    .footer .small{
+      margin-top:6px;
+      font-size:12px;
+      color: rgba(255,255,255,0.55);
+    }
+
     /* modal */
     .modal{
       position: fixed; inset:0;
@@ -244,40 +277,14 @@
     .confetti{ position:fixed; inset:0; pointer-events:none; display:none; z-index:60; }
     .confetti.show{ display:block; }
 
-    .toast{
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 18px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.16);
-      backdrop-filter: blur(10px);
-      padding: 10px 12px;
-      border-radius: 14px;
-      color: var(--text);
-      font-weight: 800;
-      font-size: 13px;
-      display:none;
-      z-index:70;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.45);
-    }
-    .toast.show{ display:block; }
-
-    .footer{
-      margin-top: 16px;
-      text-align:center;
-      color: rgba(255,255,255,0.62);
-      font-size: 13px;
-      padding: 10px 0 0;
-    }
-    .footer .small{
-      margin-top:6px;
-      font-size:12px;
-      color: rgba(255,255,255,0.55);
-    }
-
     /* no button dodge */
     #btnNo{ position:relative; }
+
+    /* Pink highlight for "Valentijn" */
+    .pink-word{
+      color: var(--pink);
+      font-weight: 900;
+    }
   </style>
 </head>
 
@@ -324,7 +331,7 @@
         <div class="card" id="vraag">
           <h3 style="margin:0 0 8px">🌹 De vraag</h3>
           <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
-            Wil je mijn Valentijn zijn?
+            Wil je mijn <span class="pink-word">Valentijn</span> zijn?
           </p>
           <div class="bigbtns" style="position:relative">
             <button class="btn btn-primary" id="btnYes">JA!! 💘</button>
@@ -353,11 +360,12 @@
     </div>
   </div>
 
+  <!-- Modal (no title inside, no copy button) -->
   <div class="modal" id="modal">
     <div class="modalbox">
       <button class="close" id="btnClose">✕</button>
-      <h2>📩 Geheime brief</h2>
-      <p id="letter">
+      <!-- removed h2 -->
+      <p id="letter" style="margin-top:6px;">
         Liefste Lottiee,<br><br>
         Ik ben zo blij dat jij in mijn leven bent. Met jou is alles zoveel beter, leuker en gewoon… beter.
         Dankjewel dat je bent wie je bent. ❤️<br><br>
@@ -365,7 +373,6 @@
         — <strong>Maxim</strong>
       </p>
       <div class="bigbtns">
-        <button class="btn btn-primary" id="btnCopy">📋 Kopieer tekst</button>
         <button class="btn btn-soft" id="btnSparkle">✨ Meer sparkles</button>
       </div>
     </div>
@@ -401,12 +408,8 @@
 
     // ======= Modal =======
     const modal = document.getElementById("modal");
-    const btnOpen = document.getElementById("btnOpen");
-    const btnClose = document.getElementById("btnClose");
-    const btnSparkle = document.getElementById("btnSparkle");
-
-    btnOpen.addEventListener("click", () => modal.classList.add("open"));
-    btnClose.addEventListener("click", () => modal.classList.remove("open"));
+    document.getElementById("btnOpen").addEventListener("click", () => modal.classList.add("open"));
+    document.getElementById("btnClose").addEventListener("click", () => modal.classList.remove("open"));
     modal.addEventListener("click", (e)=> { if(e.target === modal) modal.classList.remove("open"); });
 
     // ======= Toast =======
@@ -416,7 +419,7 @@
       toast.textContent = text;
       toast.classList.add("show");
       clearTimeout(toastT);
-      toastT = setTimeout(()=> toast.classList.remove("show"), 1400);
+      toastT = setTimeout(()=> toast.classList.remove("show"), 1600);
     }
 
     // ======= Compliments =======
@@ -479,18 +482,7 @@
       modal.classList.add("open");
     });
 
-    // ======= Copy letter =======
-    document.getElementById("btnCopy").addEventListener("click", async ()=>{
-      const text = document.getElementById("letter").innerText;
-      try{
-        await navigator.clipboard.writeText(text);
-        showToast("Gekopieerd 📋");
-      }catch{
-        showToast("Copy lukt niet 😅");
-      }
-    });
-
-    btnSparkle.addEventListener("click", ()=> party());
+    document.getElementById("btnSparkle").addEventListener("click", ()=> party());
 
     // ======= Confetti =======
     const canvas = document.getElementById("confetti");
