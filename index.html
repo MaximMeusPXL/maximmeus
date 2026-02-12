@@ -173,6 +173,10 @@
       letter-spacing: 0.2px;
       transition: transform .12s ease, filter .2s ease, background .2s ease, opacity .2s ease;
       user-select:none;
+
+      /* pulse add */
+      animation: pulse 2s ease-in-out infinite;
+      transition: transform .15s ease, box-shadow .2s ease;
     }
     .btn:active{ transform: translateY(1px) scale(0.99); }
 
@@ -295,16 +299,11 @@
     #btnNo{ position:relative; }
 
     .pink-word{ color: var(--pink); font-weight: 900; }
-    
+
     /* Pulse animatie */
     @keyframes pulse {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-3px); }
-    }
-
-    .btn {
-      animation: pulse 2s ease-in-out infinite;
-      transition: transform .15s ease, box-shadow .2s ease;
     }
 
     /* Hover overschrijft tijdelijk de pulse */
@@ -313,7 +312,6 @@
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 12px 35px rgba(0,0,0,0.4);
     }
-
   </style>
 </head>
 
