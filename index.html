@@ -123,7 +123,7 @@
 
     .hero{
       margin-top: 22px;
-      padding: 26px 18px;
+      padding: 18px;
       border-radius: 22px;
       border: 1px solid var(--stroke);
       background: linear-gradient(135deg, rgba(255,77,141,0.16), rgba(124,77,255,0.10));
@@ -139,27 +139,18 @@
       pointer-events:none;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:16px;
-      align-items:stretch;
-    }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-      nav{ justify-content:flex-start; }
-    }
-
     .card{
       padding: 18px;
       border-radius: 20px;
       background: var(--card);
       border: 1px solid rgba(255,255,255,0.12);
       backdrop-filter: blur(10px);
+      position:relative;
+      z-index:1;
     }
 
     .title{
-      font-size: clamp(24px, 3.6vw, 44px);
+      font-size: clamp(26px, 3.8vw, 44px);
       line-height:1.05;
       margin: 4px 0 10px;
       font-weight: 900;
@@ -167,12 +158,12 @@
     }
 
     .subtitle{
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       color: var(--muted);
       font-size: 15px;
     }
 
-    .chiprow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
+    .chiprow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 10px; }
     .chip{
       display:inline-flex;
       align-items:center;
@@ -190,12 +181,9 @@
       box-shadow: 0 0 0 6px rgba(255,122,182,0.14);
     }
 
-    .bigbtns{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
-    button{
-      border:0;
-      cursor:pointer;
-      font-family: inherit;
-    }
+    .bigbtns{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+
+    button{ border:0; cursor:pointer; font-family: inherit; }
     .btn{
       padding: 12px 14px;
       border-radius: 14px;
@@ -219,51 +207,22 @@
     }
     .btn-soft:hover{ background: rgba(255,255,255,0.12); transform: translateY(-1px); }
 
-    .mini{
+    .two{
+      margin-top: 12px;
       display:grid;
-      gap:12px;
-    }
-    .mini h3{ margin:0; font-size:16px; letter-spacing:-0.2px; }
-    .mini p{ margin:0; color: var(--muted); font-size:14px; line-height:1.4; }
-
-    .list{
-      margin: 12px 0 0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .li{
-      padding: 12px 12px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.16);
-      border: 1px solid rgba(255,255,255,0.10);
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .emoji{ font-size:18px; margin-top:1px; }
-    .li strong{ display:block; font-size:14px; }
-    .li span{ color: var(--muted); font-size: 13px; }
-
-    .section{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
+      position:relative;
+      z-index:1;
     }
-    @media (max-width: 860px){ .section{ grid-template-columns: 1fr; } }
+    @media (max-width: 860px){
+      nav{ justify-content:flex-start; }
+      .two{ grid-template-columns: 1fr; }
+    }
 
-    .footer{
-      margin-top: 22px;
-      text-align:center;
-      color: rgba(255,255,255,0.62);
-      font-size: 13px;
-      padding: 18px 0 0;
-    }
     .smallnote{
-      margin-top:10px;
-      text-align:center;
+      margin-top:8px;
+      text-align:left;
       font-size:12px;
       color: rgba(255,255,255,0.55);
     }
@@ -302,12 +261,9 @@
     }
     .close:hover{ background: rgba(255,255,255,0.12); }
 
-    .confetti{
-      position:fixed; inset:0; pointer-events:none; display:none; z-index:60;
-    }
+    .confetti{ position:fixed; inset:0; pointer-events:none; display:none; z-index:60; }
     .confetti.show{ display:block; }
 
-    /* tiny toast */
     .toast{
       position: fixed;
       left: 50%;
@@ -326,7 +282,22 @@
       box-shadow: 0 12px 35px rgba(0,0,0,0.45);
     }
     .toast.show{ display:block; }
-    a { color: inherit; }
+
+    .footer{
+      margin-top: 16px;
+      text-align:center;
+      color: rgba(255,255,255,0.62);
+      font-size: 13px;
+      padding: 10px 0 0;
+    }
+    .footer .small{
+      margin-top:6px;
+      font-size:12px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* The question (no button dodge) */
+    #btnNo{ position:relative; }
   </style>
 </head>
 
@@ -346,105 +317,38 @@
       </div>
 
       <nav>
-        <a class="pill" href="#liefdesbrief">💖 Liefdesbrief</a>
-        <a class="pill" href="#date">🍓 Date</a>
-        <a class="pill" href="#quiz">🎀 Quiz</a>
+        <a class="pill" href="#brief">💖 Liefdesbrief</a>
         <a class="pill" href="#vraag">💍 De vraag</a>
+        <a class="pill" href="#quiz">🎀 Quiz</a>
       </nav>
     </header>
 
     <div class="hero">
-      <div class="grid">
-        <div class="card" id="liefdesbrief">
-          <div class="title">Hey <span id="naam">liefste</span> 💗</div>
-          <p class="subtitle">
-            Ik heb dit voor jou gemaakt omdat jij mijn favoriete persoon bent. Altijd.
-          </p>
+      <!-- FULL WIDTH BRIEF -->
+      <div class="card" id="brief">
+        <div class="title">Hey <span id="naam">mijn liefste</span> 💗</div>
+        <p class="subtitle">
+          Ik heb dit voor jou gemaakt omdat jij mijn favoriete persoon bent. Altijd.
+        </p>
 
-          <div class="chiprow">
-            <div class="chip"><span class="dot"></span> Jij + ik = mijn geluk</div>
-            <div class="chip"><span class="dot" style="background:var(--gold); box-shadow:0 0 0 6px rgba(255,211,110,0.14)"></span> Extra knuffels inbegrepen</div>
-            <div class="chip"><span class="dot" style="background:var(--violet); box-shadow:0 0 0 6px rgba(124,77,255,0.14)"></span> Onbeperkte kusjes</div>
-          </div>
-
-          <div class="bigbtns">
-            <button class="btn btn-primary" id="btnOpen">📩 Open je geheime brief</button>
-            <button class="btn btn-soft" id="btnCompliment">✨ Geef me een compliment</button>
-          </div>
-
-          <p class="smallnote">
-            Tip: pas de tekst onderaan aan met jullie inside jokes 😄
-          </p>
+        <div class="chiprow">
+          <div class="chip"><span class="dot"></span> Jij + ik = mijn geluk</div>
+          <div class="chip"><span class="dot" style="background:var(--gold); box-shadow:0 0 0 6px rgba(255,211,110,0.14)"></span> Extra knuffels inbegrepen</div>
+          <div class="chip"><span class="dot" style="background:var(--violet); box-shadow:0 0 0 6px rgba(124,77,255,0.14)"></span> Onbeperkte kusjes</div>
         </div>
 
-        <div class="card mini" id="date">
-          <h3>🍓 Date-plan (jij kiest)</h3>
-          <p>Klik en verzamel punten. Hoe meer punten, hoe meer “ja” je krijgt 😌</p>
-
-          <ul class="list" id="dateList">
-            <li class="li" data-points="2">
-              <div class="emoji">🕯️</div>
-              <div><strong>Kaarslicht & cozy avond</strong><span>dekentje + film + snacks</span></div>
-            </li>
-            <li class="li" data-points="3">
-              <div class="emoji">🍝</div>
-              <div><strong>Favoriete eten (jij beslist)</strong><span>ik betaal / ik kook / ik regel</span></div>
-            </li>
-            <li class="li" data-points="2">
-              <div class="emoji">🌆</div>
-              <div><strong>Avondwandeling</strong><span>hand in hand, zonder haast</span></div>
-            </li>
-            <li class="li" data-points="4">
-              <div class="emoji">🎡</div>
-              <div><strong>Mini-avontuur</strong><span>iets nieuws samen proberen</span></div>
-            </li>
-          </ul>
-
-          <div class="chiprow" style="margin-top:12px">
-            <div class="chip">⭐ Score: <span id="score">0</span></div>
-            <div class="chip">🎯 Doel: <span id="goal">7</span></div>
-          </div>
-
-          <div class="bigbtns" style="margin-top:12px">
-            <button class="btn btn-soft" id="btnReset">↩️ Reset</button>
-            <button class="btn btn-primary" id="btnLock">🔒 Plan vastleggen</button>
-          </div>
+        <div class="bigbtns">
+          <button class="btn btn-primary" id="btnOpen">📩 Open je geheime brief</button>
+          <button class="btn btn-soft" id="btnCompliment">✨ Geef me een compliment</button>
         </div>
+
+        <p class="smallnote">
+          Tip: voeg 1–2 inside jokes toe in de brief (meer hoeft echt niet 😄)
+        </p>
       </div>
 
-      <div class="section">
-        <div class="card" id="quiz">
-          <h3 style="margin:0 0 8px">🎀 Mini-quiz</h3>
-          <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
-            Eerlijk antwoorden: wie is het schattigst?
-          </p>
-          <div class="bigbtns">
-            <button class="btn btn-primary" id="btnHer">Zij 😇</button>
-            <button class="btn btn-soft" id="btnMe">Ik… 🙃</button>
-          </div>
-          <p class="smallnote" id="quizResult" style="margin-top:10px"></p>
-        </div>
-
-        <div class="card">
-          <h3 style="margin:0 0 8px">📸 Herinnering</h3>
-          <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
-            Zet hier een foto van jullie samen.
-          </p>
-          <div style="
-            aspect-ratio: 16/10;
-            border-radius: 16px;
-            border: 1px dashed rgba(255,255,255,0.20);
-            background: rgba(0,0,0,0.18);
-            display:grid; place-items:center;
-            color: rgba(255,255,255,0.75);
-            font-weight:800;
-            padding: 10px;
-            text-align:center;
-          ">
-            Vervang <code style="opacity:.9">images/us.jpg</code> door jullie foto 💞
-          </div>
-        </div>
-
+      <!-- TWO CARDS UNDER: VRAAG + QUIZ (BOTH FULL ROW, SIDE-BY-SIDE) -->
+      <div class="two">
         <div class="card" id="vraag">
           <h3 style="margin:0 0 8px">💍 De vraag</h3>
           <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
@@ -456,17 +360,26 @@
           </div>
           <p class="smallnote" id="noMsg"></p>
         </div>
+
+        <div class="card" id="quiz">
+          <h3 style="margin:0 0 8px">🎀 Mini-quiz</h3>
+          <p style="margin:0 0 12px; color:var(--muted); font-size:14px">
+            Eerlijk antwoorden: wie is het schattigst?
+          </p>
+          <div class="bigbtns">
+            <button class="btn btn-primary" id="btnHer">Zij 😇</button>
+            <button class="btn btn-soft" id="btnMe">Ik… 🙃</button>
+          </div>
+          <p class="smallnote" id="quizResult" style="margin-top:10px"></p>
+        </div>
       </div>
     </div>
 
     <div class="footer">
       Gemaakt met ❤️ — en een beetje chaos.
-      <div class="smallnote">© <span id="year"></span> • Jij bent mijn favoriete tabblad.</div>
+      <div class="small">© <span id="year"></span> • Jij bent mijn favoriete tabblad.</div>
     </div>
   </div>
-
-  <!-- Hidden photo: just drop a file in /images/us.jpg if you want -->
-  <img src="images/us.jpg" alt="" style="display:none" onerror="/* ignore */"/>
 
   <div class="modal" id="modal">
     <div class="modalbox">
@@ -476,8 +389,8 @@
         Lieve jij,<br><br>
         Ik ben zo blij dat jij in mijn leven bent. Met jou is alles lichter, leuker en gewoon… beter.
         Dankjewel dat je bent wie je bent. ❤️<br><br>
-        P.S. Ik heb een surprise voor je. (Hint: het is een date met mij.)<br><br>
-        <strong>Ik hou van je.</strong>
+        <strong>Ik hou van je.</strong><br><br>
+        — <strong>Maxim</strong>
       </p>
       <div class="bigbtns">
         <button class="btn btn-primary" id="btnCopy">📋 Kopieer tekst</button>
@@ -488,15 +401,13 @@
 
   <script>
     // ======= Quick personalisation =======
-    const GIRLFRIEND_NAME = "mijn liefste"; // <-- wijzig dit (bv. "Sofie")
-    const YOUR_NAME = "Maxim";              // <-- wijzig dit
-    const SCORE_GOAL = 7;                  // <-- doelpunten
+    const GIRLFRIEND_NAME = "mijn liefste"; // <-- wijzig (bv. "Sofie")
+    const YOUR_NAME = "Maxim";              // <-- wijzig
 
     document.getElementById("naam").textContent = GIRLFRIEND_NAME;
     document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("goal").textContent = SCORE_GOAL;
 
-    // ======= Floating hearts generator =======
+    // ======= Floating hearts =======
     const hearts = document.getElementById("hearts");
     const heartCount = 26;
     for (let i=0;i<heartCount;i++){
@@ -512,11 +423,7 @@
       h.style.opacity = (0.12 + Math.random()*0.22).toFixed(2);
       h.style.width = size+"px";
       h.style.height = size+"px";
-      // match pseudo sizes
-      h.style.setProperty("--s", size);
       hearts.appendChild(h);
-
-      // tweak pseudo via scale (simple approach)
       h.style.transform = `translateY(${110 + Math.random()*20}vh) rotate(45deg) scale(${size/14})`;
     }
 
@@ -546,40 +453,6 @@
     ];
     document.getElementById("btnCompliment").onclick = () => {
       showToast(compliments[Math.floor(Math.random()*compliments.length)]);
-    };
-
-    // ======= Date score list =======
-    let score = 0;
-    const scoreEl = document.getElementById("score");
-    const items = [...document.querySelectorAll("#dateList .li")];
-
-    items.forEach(li => {
-      li.addEventListener("click", ()=>{
-        const pts = Number(li.dataset.points || 0);
-        if(li.dataset.active === "1") return; // already counted
-        li.dataset.active = "1";
-        li.style.background = "linear-gradient(135deg, rgba(255,77,141,0.22), rgba(124,77,255,0.14))";
-        li.style.borderColor = "rgba(255,255,255,0.18)";
-        score += pts;
-        scoreEl.textContent = score;
-        showToast("+" + pts + " ⭐");
-        if(score >= SCORE_GOAL) party();
-      });
-    });
-
-    document.getElementById("btnReset").onclick = ()=>{
-      score = 0; scoreEl.textContent = score;
-      items.forEach(li=>{
-        li.dataset.active = "0";
-        li.style.background = "rgba(0,0,0,0.16)";
-        li.style.borderColor = "rgba(255,255,255,0.10)";
-      });
-      showToast("Reset 💫");
-    };
-
-    document.getElementById("btnLock").onclick = ()=>{
-      if(score === 0) return showToast("Kies eerst iets 😄");
-      showToast("Plan vastgelegd 🔒");
     };
 
     // ======= Quiz =======
@@ -614,7 +487,6 @@
       const rect = parent.getBoundingClientRect();
       const bx = Math.random() * Math.max(0, rect.width - btnNo.offsetWidth);
       const by = Math.random() * Math.max(0, rect.height - btnNo.offsetHeight);
-      btnNo.style.position = "relative";
       btnNo.style.left = (bx - rect.width/4) + "px";
       btnNo.style.top = (by - rect.height/4) + "px";
     }
@@ -622,7 +494,6 @@
     document.getElementById("btnYes").onclick = ()=>{
       party(true);
       showToast("YAAAAY 💘");
-      // personal message in modal
       const letter = document.getElementById("letter");
       letter.innerHTML =
         `Lieve ${GIRLFRIEND_NAME},<br><br>
@@ -645,7 +516,7 @@
 
     document.getElementById("btnSparkle").onclick = ()=> party();
 
-    // ======= Confetti (simple canvas) =======
+    // ======= Confetti =======
     const canvas = document.getElementById("confetti");
     const ctx = canvas.getContext("2d");
     let confetti = [];
@@ -657,7 +528,6 @@
       ctx.scale(devicePixelRatio, devicePixelRatio);
     }
     window.addEventListener("resize", ()=> {
-      // reset scale safely
       ctx.setTransform(1,0,0,1,0,0);
       resize();
     });
@@ -701,7 +571,6 @@
         ctx.translate(p.x, p.y);
         ctx.rotate(p.a);
         ctx.globalAlpha = Math.max(0, Math.min(1, p.life/120));
-        // no fixed colors requested: use random-ish but consistent palette via HSL
         ctx.fillStyle = `hsl(${(p.x+p.y)%360} 90% 70%)`;
         ctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.6);
         ctx.restore();
