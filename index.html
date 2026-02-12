@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voor  jou  mijn  liefste  Lotte 💖</title>
+  <title>Voor jou mijn liefste Lotte 💖</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet">
@@ -81,9 +81,7 @@
       box-shadow: 0 16px 60px rgba(0,0,0,0.35);
     }
 
-    .brand{
-      display:flex; align-items:center; gap:12px;
-    }
+    .brand{ display:flex; align-items:center; gap:12px; }
     .badge{
       width:44px; height:44px;
       border-radius:14px;
@@ -103,23 +101,6 @@
       letter-spacing:0.2px;
     }
     .brand p{ margin:0; color:var(--muted); font-size:13px; }
-
-    nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
-    .pill{
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text);
-      text-decoration:none;
-      font-weight:700;
-      font-size:13px;
-      transition: transform .15s ease, background .2s ease;
-      user-select:none;
-    }
-    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.10); }
 
     .hero{
       margin-top: 22px;
@@ -216,7 +197,6 @@
       z-index:1;
     }
     @media (max-width: 860px){
-      nav{ justify-content:flex-start; }
       .two{ grid-template-columns: 1fr; }
     }
 
@@ -296,7 +276,7 @@
       color: rgba(255,255,255,0.55);
     }
 
-    /* The question (no button dodge) */
+    /* no button dodge */
     #btnNo{ position:relative; }
   </style>
 </head>
@@ -318,7 +298,6 @@
     </header>
 
     <div class="hero">
-      <!-- FULL WIDTH BRIEF -->
       <div class="card" id="brief">
         <div class="title">Voor jou <span id="naam"></span> 💗</div>
         <p class="subtitle">
@@ -332,6 +311,7 @@
         </div>
 
         <div class="bigbtns">
+          <button class="btn btn-primary" id="btnOpen">📩 Open je brief</button>
           <button class="btn btn-soft" id="btnCompliment">✨ Hier zijn wat complimentjes</button>
         </div>
 
@@ -340,7 +320,6 @@
         </p>
       </div>
 
-      <!-- TWO CARDS UNDER: VRAAG + QUIZ (BOTH FULL ROW, SIDE-BY-SIDE) -->
       <div class="two">
         <div class="card" id="vraag">
           <h3 style="margin:0 0 8px">🌹 De vraag</h3>
@@ -394,8 +373,8 @@
 
   <script>
     // ======= Quick personalisation =======
-    const GIRLFRIEND_NAME = "Lottie"; // <-- wijzig (bv. "Sofie")
-    const YOUR_NAME = "Maxie";              // <-- wijzig
+    const GIRLFRIEND_NAME = "Lottie";
+    const YOUR_NAME = "Maxie";
 
     document.getElementById("naam").textContent = GIRLFRIEND_NAME;
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -422,8 +401,12 @@
 
     // ======= Modal =======
     const modal = document.getElementById("modal");
-    document.getElementById("btnOpen").onclick = () => modal.classList.add("open");
-    document.getElementById("btnClose").onclick = () => modal.classList.remove("open");
+    const btnOpen = document.getElementById("btnOpen");
+    const btnClose = document.getElementById("btnClose");
+    const btnSparkle = document.getElementById("btnSparkle");
+
+    btnOpen.addEventListener("click", () => modal.classList.add("open"));
+    btnClose.addEventListener("click", () => modal.classList.remove("open"));
     modal.addEventListener("click", (e)=> { if(e.target === modal) modal.classList.remove("open"); });
 
     // ======= Toast =======
@@ -444,20 +427,20 @@
       "Jij doet mij altijd lachen 😌",
       "Samen met jou voelt alles perfect ❤️"
     ];
-    document.getElementById("btnCompliment").onclick = () => {
+    document.getElementById("btnCompliment").addEventListener("click", () => {
       showToast(compliments[Math.floor(Math.random()*compliments.length)]);
-    };
+    });
 
     // ======= Quiz =======
     const quizResult = document.getElementById("quizResult");
-    document.getElementById("btnHer").onclick = ()=>{
+    document.getElementById("btnHer").addEventListener("click", ()=>{
       quizResult.textContent = "JAAAAAAAAA DAT BEN JIJJJJJJJJ💖";
       party();
-    };
-    document.getElementById("btnMe").onclick = ()=>{
+    });
+    document.getElementById("btnMe").addEventListener("click", ()=>{
       quizResult.textContent = "IK??? NEEEE FOUT ANTWOORD ❤️";
       showToast("🙃");
-    };
+    });
 
     // ======= The question (yes/no) =======
     const btnNo = document.getElementById("btnNo");
@@ -466,8 +449,9 @@
       "OHHH waarom probeer je dit! 😄",
       "STOUT! FOEI! 🙈",
       "NIET LIEF! Maar ik hou wel van jou hihi 😌",
-      "ALSJEBLIEFFFTTT? 💘",
+      "ALSJEBLIEFFFTTT? 💘"
     ];
+
     btnNo.addEventListener("mouseover", dodge);
     btnNo.addEventListener("click", ()=>{
       noMsg.textContent = noLines[Math.floor(Math.random()*noLines.length)];
@@ -483,7 +467,7 @@
       btnNo.style.top = (by - rect.height/4) + "px";
     }
 
-    document.getElementById("btnYes").onclick = ()=>{
+    document.getElementById("btnYes").addEventListener("click", ()=>{
       party(true);
       showToast("YAAAAY 💘");
       const letter = document.getElementById("letter");
@@ -493,10 +477,10 @@
         Ik kies jou. Vandaag, morgen, en alle dagen daarna.<br><br>
         <strong>kusjesss jou ${YOUR_NAME}</strong>`;
       modal.classList.add("open");
-    };
+    });
 
     // ======= Copy letter =======
-    document.getElementById("btnCopy").onclick = async ()=>{
+    document.getElementById("btnCopy").addEventListener("click", async ()=>{
       const text = document.getElementById("letter").innerText;
       try{
         await navigator.clipboard.writeText(text);
@@ -504,9 +488,9 @@
       }catch{
         showToast("Copy lukt niet 😅");
       }
-    };
+    });
 
-    document.getElementById("btnSparkle").onclick = ()=> party();
+    btnSparkle.addEventListener("click", ()=> party());
 
     // ======= Confetti =======
     const canvas = document.getElementById("confetti");
@@ -517,12 +501,10 @@
     function resize(){
       canvas.width = window.innerWidth * devicePixelRatio;
       canvas.height = window.innerHeight * devicePixelRatio;
+      ctx.setTransform(1,0,0,1,0,0);
       ctx.scale(devicePixelRatio, devicePixelRatio);
     }
-    window.addEventListener("resize", ()=> {
-      ctx.setTransform(1,0,0,1,0,0);
-      resize();
-    });
+    window.addEventListener("resize", resize);
     resize();
 
     function party(big=false){
